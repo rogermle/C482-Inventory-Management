@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="350.0" prefWidth="425.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View_Controller.AddPartController">
+<AnchorPane prefHeight="350.0" prefWidth="425.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" >
     <children>
         <Label id="addPartLbl" layoutX="7.0" prefHeight="25.0" prefWidth="105.0" text="Add Part">
             <font>
@@ -29,7 +29,7 @@
          <font>
             <Font name="Times New Roman" size="18.0" />
          </font></Label>
-        <Label layoutX="14.0" layoutY="264.0" text="Company Name">
+        <Label fx:id="inHouseToggleLbl" layoutX="14.0" layoutY="264.0" text="Company Name">
          <font>
             <Font name="Times New Roman" size="18.0" />
          </font></Label>

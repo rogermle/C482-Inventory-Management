@@ -16,7 +16,7 @@ public class Inventory {
         allPartsCount = 0;
         allProductsCount = 0;
     }
-    public void addPart(Part newPart) {
+    public static void addPart(Part newPart) {
         if(newPart != null) {
             allParts.add(newPart);
             allPartsCount++;
@@ -24,14 +24,14 @@ public class Inventory {
 
     }
 
-    public void addProduct(Product newProduct) {
+    public static void addProduct(Product newProduct) {
         if(newProduct != null) {
             allProducts.add(newProduct);
             allProductsCount++;
         }
     }
 
-    public Part lookupPart(int partId) {
+    public static Part lookupPart(int partId) {
         if(!allParts.isEmpty())
         {
             for(int i = 0; i < allParts.size(); i++) {
@@ -44,7 +44,7 @@ public class Inventory {
         return null;
     }
 
-    public Product lookupProduct(int productId) {
+    public static Product lookupProduct(int productId) {
         if(!allProducts.isEmpty())
         {
             for(int i = 0; i < allProducts.size(); i++) {
@@ -56,43 +56,43 @@ public class Inventory {
         return null;
     }
 
-    public ObservableList<Part> lookupPart(String partName) {
+    public static ObservableList<Part> lookupPart(String partName) {
         return allParts;
     }
 
-    public ObservableList<Product> lookupProduct() {
+    public static ObservableList<Product> lookupProduct() {
         return allProducts;
     }
 
-    public void updatePart() {
+    public static void updatePart() {
 
     }
 
-    public void updateProduct() {
+    public static void updateProduct() {
 
     }
 
-    public Boolean deletePart() {
+    public static Boolean deletePart() {
         return true;
     }
 
-    public Boolean deleteProduct() {
+    public static Boolean deleteProduct() {
         return true;
     }
 
-    public ObservableList<Part> getAllParts() {
+    public static ObservableList<Part> getAllParts() {
         return allParts;
     }
 
-    public ObservableList<Product> getAllProducts() {
+    public static ObservableList<Product> getAllProducts() {
         return allProducts;
     }
 
-    public int getAllPartsCount() {
+    public static int getAllPartsCount() {
         return allPartsCount;
     }
 
-    public int getAllProductsCount() {
+    public static int getAllProductsCount() {
         return allProductsCount;
     }
 

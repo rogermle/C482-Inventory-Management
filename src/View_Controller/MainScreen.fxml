@@ -50,7 +50,7 @@
          </font>
       </Button>
       <Button fx:id="partsAddBtn" layoutX="14.0" layoutY="299.0" mnemonicParsing="false" onAction="#onActionPartAdd" text="Add" />
-      <Button layoutX="261.0" layoutY="299.0" mnemonicParsing="false" text="Modify" />
+      <Button fx:id="partsModifyBtn" layoutX="261.0" layoutY="299.0" mnemonicParsing="false" onAction="#onActionPartModify" text="Modify" />
       <Button layoutX="359.0" layoutY="299.0" mnemonicParsing="false" text="Delete" />
       <Button id="productsAddBtn" layoutX="435.0" layoutY="299.0" mnemonicParsing="false" text="Add" />
       <Button id="productsModifyBtn" layoutX="683.0" layoutY="299.0" mnemonicParsing="false" text="Modify" />

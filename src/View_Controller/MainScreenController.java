@@ -45,11 +45,23 @@ public class MainScreenController implements Initializable {
 
     @FXML void onActionPartAdd(ActionEvent event) throws IOException{
         stage = (Stage) ((Button)event.getSource()).getScene().getWindow();
-        scene = FXMLLoader.load(getClass().getResource("/View_Controller/AddPart.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View_Controller/AddPart.fxml"));
+        View_Controller.AddPartController controller = new View_Controller.AddPartController(inv);
+        loader.setController(controller);
+        Parent root = loader.load();
         stage.setTitle("Add Part");
-        stage.setScene(new Scene(scene));
+        stage.setScene(new Scene(root));
         stage.show();
         //System.out.println("Parts Add Button Clicked!");
+    }
+
+    @FXML void onActionPartModify(ActionEvent event) throws IOException{
+        System.out.println("Part Modify Clicked!");
+
+    }
+
+    @FXML void onActionDelete(ActionEvent event) {
+        System.out.println("Parts Delete Clicked!");
     }
 
     @Override
