@@ -37,21 +37,21 @@
             <Font name="Times New Roman" size="24.0" />
          </font>
       </Label>
-      <Button id="searchPartsBtn" layoutX="340.0" layoutY="75.0" mnemonicParsing="false" text="Search">
+      <Button id="partsSearchBtn" fx:id="partsSearchBtn" layoutX="340.0" layoutY="75.0" mnemonicParsing="false" onAction="#onActionPartSearch" text="Search">
          <font>
             <Font name="Times New Roman" size="18.0" />
          </font>
       </Button>
-      <TextField id="searchPartsTxt" layoutX="70.0" layoutY="78.0" prefHeight="27.0" prefWidth="257.0" />
-      <TextField id="searchProductsTxt" layoutX="531.0" layoutY="78.0" prefHeight="27.0" prefWidth="208.0" />
-      <Button id="searchProducstBtn" layoutX="762.0" layoutY="76.0" mnemonicParsing="false" text="Search">
+      <TextField id="partsSearchTxt" fx:id="partSearchTxt" layoutX="70.0" layoutY="78.0" prefHeight="27.0" prefWidth="257.0" />
+      <TextField id="productsSearchTxt" fx:id="productsSearchTxt" layoutX="531.0" layoutY="78.0" prefHeight="27.0" prefWidth="208.0" />
+      <Button id="productSearchBtn" fx:id="productSearchBtn" layoutX="762.0" layoutY="76.0" mnemonicParsing="false" onAction="#onActionProductSerach" text="Search">
          <font>
             <Font name="Times New Roman" size="18.0" />
          </font>
       </Button>
       <Button fx:id="partsAddBtn" layoutX="14.0" layoutY="299.0" mnemonicParsing="false" onAction="#onActionPartAdd" text="Add" />
       <Button fx:id="partsModifyBtn" layoutX="261.0" layoutY="299.0" mnemonicParsing="false" onAction="#onActionPartModify" text="Modify" />
-      <Button layoutX="359.0" layoutY="299.0" mnemonicParsing="false" text="Delete" />
+      <Button fx:id="partsDelBtn" layoutX="359.0" layoutY="299.0" mnemonicParsing="false" onAction="#onActionDelete" text="Delete" />
       <Button id="productsAddBtn" layoutX="435.0" layoutY="299.0" mnemonicParsing="false" text="Add" />
       <Button id="productsModifyBtn" layoutX="683.0" layoutY="299.0" mnemonicParsing="false" text="Modify" />
       <Button id="productsDeleteBtn" layoutX="781.0" layoutY="299.0" mnemonicParsing="false" text="Delete" />

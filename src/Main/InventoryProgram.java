@@ -33,8 +33,8 @@ public class InventoryProgram extends Application {
         partIdCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         partNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
 
-        partsTableView.setItems(inv.getAllParts());
-        productsTableView.setItems(inv.getAllProducts());
+        partsTableView.setItems(Inventory.getAllParts());
+        productsTableView.setItems(Inventory.getAllProducts());
 
         //System.out.println(inv.getAllParts());
     }
@@ -48,16 +48,16 @@ public class InventoryProgram extends Application {
         Part a1 = new InHouse(1, "Part A1", 2.99, 10, 5, 100, 101);
         Part a2 = new InHouse(3, "Part A2", 4.99, 11, 5, 100, 103);
         Part b = new InHouse(2, "Part B", 3.99, 9, 5, 100, 102);
-        inv.addPart(a1);
-        inv.addPart(b);
-        inv.addPart(a2);
+        Inventory.addPart(a1);
+        Inventory.addPart(b);
+        Inventory.addPart(a2);
         //Add OutSourced Parts
         Part o1 = new OutSourced(6, "Part 01", 2.99, 10, 5, 100, "ACME Co.");
         Part p = new OutSourced(7, "Part P", 3.99, 9, 5, 100, "ACME Co.");
         Part q = new OutSourced(8, "Part Q", 2.99, 10, 5, 100, "FLORIDA Co.");
-        inv.addPart(o1);
-        inv.addPart(p);
-        inv.addPart(q);
+        Inventory.addPart(o1);
+        Inventory.addPart(p);
+        Inventory.addPart(q);
 
         //Add Product
 
@@ -65,9 +65,9 @@ public class InventoryProgram extends Application {
         Product p2 = new Product(2, "Rail Gun", 99.99, 1, 1, 1);
         Product p3 = new Product(3, "Glock 19", 99.99, 1, 1, 1);
 
-        inv.addProduct(p1);
-        inv.addProduct(p2);
-        inv.addProduct(p3);
-        System.out.println(inv.getAllProducts());
+        Inventory.addProduct(p1);
+        Inventory.addProduct(p2);
+        Inventory.addProduct(p3);
+        System.out.println(Inventory.getAllProducts());
     }
 }

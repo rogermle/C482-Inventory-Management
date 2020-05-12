@@ -75,7 +75,7 @@ public class AddPartController implements Initializable {
     //Actions
 
     @FXML
-    public void onActionInHouse(ActionEvent event){
+    public void onActionModifyInHouse(ActionEvent event){
         if(inHouse.isSelected()){
             System.out.println("InHouse clicked!");
             this.isInHouse = true;
@@ -107,7 +107,7 @@ public class AddPartController implements Initializable {
         System.out.println(txtName);
         int txtInv = Integer.parseInt(this.inventory.getText());
         System.out.println(txtInv);
-        Double txtPrice = Double.parseDouble(this.price.getText());
+        double txtPrice = Double.parseDouble(this.price.getText());
         System.out.println(txtPrice);
         int txtMin = Integer.parseInt(this.min.getText());
         System.out.println(txtMin);
