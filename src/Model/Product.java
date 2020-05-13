@@ -97,5 +97,9 @@ public class Product {
         return associatedParts;
     }
 
+    public boolean validate() {
+        return true;
+    }
+
 
 }

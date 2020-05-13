@@ -10,10 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -56,7 +53,7 @@ public class AddPartController implements Initializable {
 
     private Parent scene;
 
-    private Inventory inv;
+    private final Inventory inv;
 
     private boolean isInHouse;
 
@@ -75,7 +72,7 @@ public class AddPartController implements Initializable {
     //Actions
 
     @FXML
-    public void onActionModifyInHouse(ActionEvent event){
+    public void onActionInHouse(ActionEvent event){
         if(inHouse.isSelected()){
             System.out.println("InHouse clicked!");
             this.isInHouse = true;
@@ -102,30 +99,30 @@ public class AddPartController implements Initializable {
     @FXML
     public void onActionSave(ActionEvent event) throws IOException{
         int txtId = Inventory.getAllPartsCount();
-        System.out.println(txtId);
         String txtName = this.name.getText();
-        System.out.println(txtName);
         int txtInv = Integer.parseInt(this.inventory.getText());
-        System.out.println(txtInv);
         double txtPrice = Double.parseDouble(this.price.getText());
-        System.out.println(txtPrice);
         int txtMin = Integer.parseInt(this.min.getText());
-        System.out.println(txtMin);
         int txtMax = Integer.parseInt(this.max.getText());
-        System.out.println(txtMax);
-
+        Part newPart;
         if(this.isInHouse){
             int txtMachineId= Integer.parseInt(this.company.getText());
-            Inventory.addPart(new InHouse(txtId, txtName, txtPrice, txtInv, txtMin, txtMax, txtMachineId));
-            this.reset();
-            System.out.println("Save InHouse!");
+            newPart = new InHouse(txtId, txtName, txtPrice, txtInv, txtMin, txtMax, txtMachineId);
         } else {
             String txtCompany = company.getText();
-            Inventory.addPart(new OutSourced(txtId, txtName, txtPrice, txtInv, txtMin, txtMax, txtCompany));
-            this.reset();
-            System.out.println("Save OutSourced!");
+            newPart = new OutSourced(txtId, txtName, txtPrice, txtInv, txtMin, txtMax, txtCompany);
         }
-        System.out.println("Save clicked!");
+
+        if( newPart.isValid(txtInv, txtMin, txtMax) ) {
+            Inventory.addPart(newPart);
+            this.onActionCancel(event);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Invalid Inventory Error");
+            alert.setContentText("Entered Stock Level: " + newPart.getStock() +"\r\nMinimum: " + newPart.getMin() +
+                    "\r\nMaximum: " + newPart.getMax());
+            alert.show();
+        }
     }
 
     @FXML
@@ -140,15 +137,6 @@ public class AddPartController implements Initializable {
         stage.setTitle("Inventory Management System");
         stage.setScene(new Scene(root));
         stage.show();
-    }
-
-    private void reset() {
-        this.name.setText("");
-        this.inventory.setText("");
-        this.price.setText("");
-        this.min.setText("");
-        this.max.setText("");
-        this.company.setText("");
     }
 
 

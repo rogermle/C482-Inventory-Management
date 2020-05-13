@@ -1,5 +1,8 @@
 package Model;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 public abstract class Part {
     protected int id;
     protected String name;
@@ -68,4 +71,12 @@ public abstract class Part {
     public int getMax() {
         return this.max;
     }
+
+    public boolean isValid(int stock, int min, int max) {
+
+        return stock >= min && stock <= max;
+    }
+
+
+
 }

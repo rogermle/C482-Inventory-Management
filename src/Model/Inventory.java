@@ -14,8 +14,8 @@ public class Inventory {
     public Inventory() {
         allParts = FXCollections.observableArrayList();
         allProducts = FXCollections.observableArrayList();
-        allPartsCount = 0;
-        allProductsCount = 0;
+        allPartsCount = 1;
+        allProductsCount = 1;
     }
     public static void addPart(Part newPart) {
         if(newPart != null) {
@@ -77,6 +77,7 @@ public class Inventory {
             for(int i = 0; i < allParts.size(); i++) {
                 if(allParts.get(i) == delPart){
                     allParts.remove(i);
+                    allPartsCount--;
                     return true;
                 }
             }
@@ -89,6 +90,7 @@ public class Inventory {
             for(int i = 0; i < allProducts.size(); i++) {
                 if(allProducts.get(i) == delProduct){
                     allProducts.remove(i);
+                    allProductsCount--;
                     return true;
                 }
             }
