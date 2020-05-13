@@ -107,11 +107,11 @@ public class Inventory {
     }
 
     public static int getAllPartsCount() {
-        return allPartsCount;
+        return allPartsCount - 1;
     }
 
     public static int getAllProductsCount() {
-        return allProductsCount;
+        return allProductsCount -1;
     }
 
 
