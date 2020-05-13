@@ -4,7 +4,6 @@ import Model.InHouse;
 import Model.OutSourced;
 import Model.Inventory;
 import Model.Part;
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,7 +13,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
-import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
@@ -121,7 +119,7 @@ public class ModifyPartController implements Initializable {
             stage.show();
         }
         catch(Exception e){
-
+            System.out.println(e.getMessage());
         }
     }
 
@@ -131,7 +129,7 @@ public class ModifyPartController implements Initializable {
         alert.setTitle("Exit Modify Part?");
         alert.setContentText("Exit & Return to Main Screen?");
         Optional<ButtonType> option = alert.showAndWait();
-        if(option.get() == ButtonType.OK) {
+        if(option.isPresent() && option.get()  == ButtonType.OK) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/View_Controller/MainScreen.fxml"));
             View_Controller.MainScreenController controller = new View_Controller.MainScreenController(inv);
             loader.setController(controller);
