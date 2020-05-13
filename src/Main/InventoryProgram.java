@@ -66,6 +66,5 @@ public class InventoryProgram extends Application {
         Inventory.addProduct(p1);
         Inventory.addProduct(p2);
         Inventory.addProduct(p3);
-        System.out.println(Inventory.getAllProducts());
     }
 }

@@ -50,7 +50,13 @@ public class MainScreenController implements Initializable {
     //Buttons
 
     @FXML void onActionExit(ActionEvent event) {
-        System.exit(0);
+        alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Exit Inventory Management System?");
+        alert.setContentText("Exit & Quit?");
+        Optional<ButtonType> option = alert.showAndWait();
+        if(option.get() == ButtonType.OK){
+            System.exit(0);
+        }
     }
 
     @FXML void onActionPartAdd(ActionEvent event) throws IOException{
