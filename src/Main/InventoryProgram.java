@@ -35,8 +35,6 @@ public class InventoryProgram extends Application {
 
         partsTableView.setItems(Inventory.getAllParts());
         productsTableView.setItems(Inventory.getAllProducts());
-
-        //System.out.println(inv.getAllParts());
     }
 
     public static void main(String[] args) {

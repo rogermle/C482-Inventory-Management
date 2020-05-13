@@ -11,15 +11,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ModifyPartController implements Initializable {
@@ -128,15 +126,20 @@ public class ModifyPartController implements Initializable {
 
     @FXML
     void onActionModifyCancel(ActionEvent event) throws IOException {
-        System.out.println("Modify Cancel Clicked!");
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View_Controller/MainScreen.fxml"));
-        View_Controller.MainScreenController controller = new View_Controller.MainScreenController(inv);
-        loader.setController(controller);
-        Parent root = loader.load();
-        stage = (Stage) ((Button)event.getSource()).getScene().getWindow();
-        stage.setTitle("Inventory Management System");
-        stage.setScene(new Scene(root));
-        stage.show();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Exit Modify Part?");
+        alert.setContentText("Exit & Return to Main Screen?");
+        Optional<ButtonType> option = alert.showAndWait();
+        if(option.get() == ButtonType.OK) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View_Controller/MainScreen.fxml"));
+            View_Controller.MainScreenController controller = new View_Controller.MainScreenController(inv);
+            loader.setController(controller);
+            Parent root = loader.load();
+            stage = (Stage) ((Button)event.getSource()).getScene().getWindow();
+            stage.setTitle("Inventory Management System");
+            stage.setScene(new Scene(root));
+            stage.show();
+        }
     }
 
     public ModifyPartController(int index, Part part){

@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class MainScreenController implements Initializable {
@@ -81,7 +82,6 @@ public class MainScreenController implements Initializable {
     }
 
     @FXML void onActionProductAdd(ActionEvent event) throws IOException {
-        System.out.println("Add Product Clicked!");
         stage = (Stage) ((Button)event.getSource()).getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/View_Controller/AddProduct.fxml"));
         View_Controller.AddProductController controller = new View_Controller.AddProductController(inv);
@@ -111,8 +111,6 @@ public class MainScreenController implements Initializable {
         try{
             Part selectedPart = partsTableView.getSelectionModel().getSelectedItem();
             int selectedIndex = Inventory.getAllParts().indexOf(selectedPart);
-            System.out.println(selectedPart);
-            System.out.println("Part Modify Clicked!");
             stage = (Stage) ((Button)event.getSource()).getScene().getWindow();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/View_Controller/ModifyPart.fxml"));
             View_Controller.ModifyPartController controller = new View_Controller.ModifyPartController(selectedIndex, selectedPart);
@@ -132,22 +130,28 @@ public class MainScreenController implements Initializable {
     }
 
     @FXML void onActionPartDelete(ActionEvent event) throws Exception{
-        System.out.println("Part Delete Clicked!");
         try{
             Part selectedPart = partsTableView.getSelectionModel().getSelectedItem();
-            if( Inventory.deletePart(selectedPart) ){
-                // @todo Display success message
-                alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Success");
-                alert.setContentText("Deleted: " + selectedPart.getName());
-                alert.show();
-            } else if( selectedPart == null) {
+            if( selectedPart == null) {
                 alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText("Please select a valid Part");
                 alert.setTitle("Selection Error");
                 alert.show();
+            } else {
+                alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Delete Part?");
+                alert.setContentText("Are you sure you want to delete " + selectedPart.getName() + "?");
+                Optional<ButtonType> option = alert.showAndWait();
+                if(option.get() == ButtonType.OK) {
+                    if( Inventory.deletePart(selectedPart) ){
+                        alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Success");
+                        alert.setContentText("Deleted: " + selectedPart.getName());
+                        alert.show();
+                    }
+                    partsTableView.setItems(Inventory.getAllParts());
+                }
             }
-            partsTableView.setItems(Inventory.getAllParts());
         }
         catch (Exception e) {
             alert = new Alert(Alert.AlertType.ERROR);
