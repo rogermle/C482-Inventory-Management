@@ -70,47 +70,6 @@ public class MainScreenController implements Initializable {
         stage.show();
     }
 
-    @FXML void onActionPartSearch(ActionEvent event) throws IOException{
-        String search = partSearchTxt.getText();
-        ObservableList<Part> matches = Inventory.lookupPart(search);
-        if( matches == null || matches.isEmpty() ||search.length() == 0 ){
-            //Display Alert
-            alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Part Search Results");
-            alert.setContentText("Searched for: " + search + "\r\nNo Matching Parts Found");
-            partsTableView.setItems(Inventory.getAllParts());
-            alert.show();
-        } else {
-            partsTableView.setItems(matches);
-        }
-    }
-
-    @FXML void onActionProductAdd(ActionEvent event) throws IOException {
-        stage = (Stage) ((Button)event.getSource()).getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View_Controller/AddProduct.fxml"));
-        View_Controller.AddProductController controller = new View_Controller.AddProductController(inv);
-        loader.setController(controller);
-        Parent root = loader.load();
-        stage.setTitle("Add Product");
-        stage.setScene(new Scene(root));
-        stage.show();
-    }
-
-    @FXML void onActionProductSearch(ActionEvent event) throws IOException{
-        String search = productSearchTxt.getText();
-        ObservableList<Product> matches = Inventory.lookupProduct(search);
-        if( matches == null || matches.isEmpty() || search.length() == 0 ){
-            //Display Alert
-            alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Product Search Results");
-            alert.setContentText("Searched for: " + search + "\r\nNo Matching Parts Found");
-            productsTableView.setItems(Inventory.getAllProducts());
-            alert.show();
-        } else {
-            productsTableView.setItems(matches);
-        }
-    }
-
     @FXML void onActionPartModify(ActionEvent event) throws IOException{
         try{
             Part selectedPart = partsTableView.getSelectionModel().getSelectedItem();
@@ -159,6 +118,75 @@ public class MainScreenController implements Initializable {
             alert.show();
         }
     }
+
+    @FXML void onActionPartSearch(ActionEvent event) throws IOException{
+        String search = partSearchTxt.getText();
+        ObservableList<Part> matches = Inventory.lookupPart(search);
+        if( matches == null || matches.isEmpty() ||search.length() == 0 ){
+            //Display Alert
+            alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Part Search Results");
+            alert.setContentText("Searched for: " + search + "\r\nNo Matching Parts Found");
+            partsTableView.setItems(Inventory.getAllParts());
+            alert.show();
+        } else {
+            partsTableView.setItems(matches);
+        }
+    }
+
+    @FXML void onActionProductAdd(ActionEvent event) throws IOException {
+        stage = (Stage) ((Button)event.getSource()).getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View_Controller/AddProduct.fxml"));
+        View_Controller.AddProductController controller = new View_Controller.AddProductController(inv);
+        loader.setController(controller);
+        Parent root = loader.load();
+        stage.setTitle("Add Product");
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
+
+    @FXML void onActionProductModify(ActionEvent event) throws IOException {
+        System.out.println("Product Modify Clicked!");
+        try{
+            Product selectedProduct = productsTableView.getSelectionModel().getSelectedItem();
+            int selectedIndex = Inventory.getAllProducts().indexOf(selectedProduct);
+            stage = (Stage) ((Button)event.getSource()).getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View_Controller/ModifyProduct.fxml"));
+            View_Controller.ModifyProductController controller = new View_Controller.ModifyProductController(selectedIndex, selectedProduct);
+            loader.setController(controller);
+            Parent root = loader.load();
+            stage.setTitle("Modify Product");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch(IOException e) {
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText(e.getMessage());
+            alert.setTitle("Selection Error");
+            alert.show();
+        }
+
+    }
+
+    @FXML void onActionProductDelete(ActionEvent event) throws  IOException {
+        System.out.println("Product Delete Clicked!");
+    }
+
+    @FXML void onActionProductSearch(ActionEvent event) throws IOException{
+        String search = productSearchTxt.getText();
+        ObservableList<Product> matches = Inventory.lookupProduct(search);
+        if( matches == null || matches.isEmpty() || search.length() == 0 ){
+            //Display Alert
+            alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Product Search Results");
+            alert.setContentText("Searched for: " + search + "\r\nNo Matching Products Found");
+            productsTableView.setItems(Inventory.getAllProducts());
+            alert.show();
+        } else {
+            productsTableView.setItems(matches);
+        }
+    }
+
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

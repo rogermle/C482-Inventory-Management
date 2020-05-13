@@ -44,17 +44,17 @@
       </Button>
       <TextField id="partsSearchTxt" fx:id="partSearchTxt" layoutX="70.0" layoutY="78.0" prefHeight="27.0" prefWidth="257.0" />
       <TextField id="productsSearchTxt" fx:id="productsSearchTxt" layoutX="531.0" layoutY="78.0" prefHeight="27.0" prefWidth="208.0" />
-      <Button id="productSearchBtn" fx:id="productSearchBtn" layoutX="762.0" layoutY="76.0" mnemonicParsing="false" onAction="#onActionProductSerach" text="Search">
+      <Button id="productSearchBtn" fx:id="productSearchBtn" layoutX="762.0" layoutY="76.0" mnemonicParsing="false" onAction="#onActionProductSearch" text="Search">
          <font>
             <Font name="Times New Roman" size="18.0" />
          </font>
       </Button>
       <Button fx:id="partsAddBtn" layoutX="14.0" layoutY="299.0" mnemonicParsing="false" onAction="#onActionPartAdd" text="Add" />
       <Button fx:id="partsModifyBtn" layoutX="261.0" layoutY="299.0" mnemonicParsing="false" onAction="#onActionPartModify" text="Modify" />
-      <Button fx:id="partsDelBtn" layoutX="359.0" layoutY="299.0" mnemonicParsing="false" onAction="#onActionDelete" text="Delete" />
-      <Button id="productsAddBtn" layoutX="435.0" layoutY="299.0" mnemonicParsing="false" text="Add" />
-      <Button id="productsModifyBtn" layoutX="683.0" layoutY="299.0" mnemonicParsing="false" text="Modify" />
-      <Button id="productsDeleteBtn" layoutX="781.0" layoutY="299.0" mnemonicParsing="false" text="Delete" />
+      <Button fx:id="partsDelBtn" layoutX="359.0" layoutY="299.0" mnemonicParsing="false" onAction="#onActionPartDelete" text="Delete" />
+      <Button id="productsAddBtn" layoutX="435.0" layoutY="299.0" mnemonicParsing="false" text="Add" onAction="#onActionProductAdd"/>
+      <Button id="productsModifyBtn" layoutX="683.0" layoutY="299.0" mnemonicParsing="false" text="Modify" onAction="#onActionProductModify"/>
+      <Button id="productsDeleteBtn" layoutX="781.0" layoutY="299.0" mnemonicParsing="false" text="Delete" onAction="#onActionProductDelete"/>
       <Button id="exitBtn" layoutX="799.0" layoutY="340.0" mnemonicParsing="false" onAction="#onActionExit" text="Exit" />
    </children>
 </AnchorPane>

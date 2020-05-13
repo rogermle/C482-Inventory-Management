@@ -1,7 +1,5 @@
 package Model;
 
-import Model.*;
-import javafx.beans.value.ObservableListValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
