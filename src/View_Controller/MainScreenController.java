@@ -149,12 +149,7 @@ public class MainScreenController implements Initializable {
                 alert.setContentText("Are you sure you want to delete " + selectedPart.getName() + "?");
                 Optional<ButtonType> option = alert.showAndWait();
                 if(option.get() == ButtonType.OK) {
-                    if( Inventory.deletePart(selectedPart) ){
-                        alert = new Alert(Alert.AlertType.INFORMATION);
-                        alert.setTitle("Success");
-                        alert.setContentText("Deleted: " + selectedPart.getName());
-                        alert.show();
-                    }
+                    Inventory.deletePart(selectedPart);
                     partsTableView.setItems(Inventory.getAllParts());
                 }
             }

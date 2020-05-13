@@ -90,7 +90,6 @@ public class ModifyPartController implements Initializable {
 
     @FXML
     void onActionModifySave(ActionEvent event){
-        System.out.println("Modify Save Clicked!");
         try{
             if(modifyInHouse.isSelected()){
                 InHouse newPart = new InHouse();
@@ -114,14 +113,18 @@ public class ModifyPartController implements Initializable {
                 newPart.setCompanyName(modifyCompany.getText());
                 Inventory.updatePart(this.index, newPart);
             }
-            this.onActionModifyCancel(event);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View_Controller/MainScreen.fxml"));
+            View_Controller.MainScreenController controller = new View_Controller.MainScreenController(inv);
+            loader.setController(controller);
+            Parent root = loader.load();
+            stage = (Stage) ((Button)event.getSource()).getScene().getWindow();
+            stage.setTitle("Inventory Management System");
+            stage.setScene(new Scene(root));
+            stage.show();
         }
         catch(Exception e){
 
         }
-
-
-
     }
 
     @FXML

@@ -14,8 +14,8 @@ public class Inventory {
     public Inventory() {
         allParts = FXCollections.observableArrayList();
         allProducts = FXCollections.observableArrayList();
-        allPartsCount = 1;
-        allProductsCount = 1;
+        allPartsCount = 0;
+        allProductsCount = 0;
     }
     public static void addPart(Part newPart) {
         if(newPart != null) {
@@ -107,11 +107,11 @@ public class Inventory {
     }
 
     public static int getAllPartsCount() {
-        return allPartsCount - 1;
+        return allPartsCount;
     }
 
     public static int getAllProductsCount() {
-        return allProductsCount -1;
+        return allProductsCount;
     }
 
 

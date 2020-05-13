@@ -75,7 +75,6 @@ public class AddPartController implements Initializable {
     @FXML
     public void onActionInHouse(ActionEvent event){
         if(inHouse.isSelected()){
-            System.out.println("InHouse clicked!");
             this.isInHouse = true;
             inHouse.setSelected(true);
             outSourced.setSelected(false);
@@ -88,7 +87,6 @@ public class AddPartController implements Initializable {
     @FXML
     public void onActionOutSourced(ActionEvent event){
         if(outSourced.isSelected()){
-            System.out.println("OutSourced clicked!");
             this.isInHouse = false;
             inHouse.setSelected(false);
             outSourced.setSelected(true);
@@ -99,7 +97,7 @@ public class AddPartController implements Initializable {
 
     @FXML
     public void onActionSave(ActionEvent event) throws IOException{
-        int txtId = Inventory.getAllPartsCount();
+        int txtId = Inventory.getAllPartsCount() + 1;
         String txtName = this.name.getText();
         int txtInv = Integer.parseInt(this.inventory.getText());
         double txtPrice = Double.parseDouble(this.price.getText());
@@ -116,7 +114,14 @@ public class AddPartController implements Initializable {
 
         if( newPart.isValid(txtInv, txtMin, txtMax) ) {
             Inventory.addPart(newPart);
-            this.onActionCancel(event);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View_Controller/MainScreen.fxml"));
+            View_Controller.MainScreenController controller = new View_Controller.MainScreenController(inv);
+            loader.setController(controller);
+            Parent root = loader.load();
+            stage = (Stage) ((Button)event.getSource()).getScene().getWindow();
+            stage.setTitle("Inventory Management System");
+            stage.setScene(new Scene(root));
+            stage.show();
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Invalid Inventory Error");
@@ -128,14 +133,12 @@ public class AddPartController implements Initializable {
 
     @FXML
     public void onActionCancel(ActionEvent event) throws IOException{
-        System.out.println("Cancel clicked!");
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Exit Add Part?");
         alert.setContentText("Exit & Return to Main Screen?");
         Optional<ButtonType> option = alert.showAndWait();
         if(option.get() == ButtonType.OK){
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/View_Controller/MainScreen.fxml"));
-            System.out.println(inv);
             View_Controller.MainScreenController controller = new View_Controller.MainScreenController(inv);
             loader.setController(controller);
             Parent root = loader.load();
