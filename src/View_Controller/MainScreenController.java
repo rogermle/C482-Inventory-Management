@@ -68,13 +68,11 @@ public class MainScreenController implements Initializable {
         stage.setTitle("Add Part");
         stage.setScene(new Scene(root));
         stage.show();
-        //System.out.println("Parts Add Button Clicked!");
     }
 
     @FXML void onActionPartSearch(ActionEvent event) throws IOException{
         String search = partSearchTxt.getText();
         ObservableList<Part> matches = Inventory.lookupPart(search);
-        System.out.println(matches);
         if( matches == null || matches.isEmpty() ||search.length() == 0 ){
             //Display Alert
             alert = new Alert(Alert.AlertType.INFORMATION);

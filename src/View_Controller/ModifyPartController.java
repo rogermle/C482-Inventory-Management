@@ -67,7 +67,6 @@ public class ModifyPartController implements Initializable {
     @FXML
     void onActionModifyInHouse(ActionEvent event) {
         if(modifyInHouse.isSelected()){
-            System.out.println("InHouse clicked!");
             this.isInHouse = true;
             modifyInHouse.setSelected(true);
             modifyOutSourced.setSelected(false);
@@ -79,7 +78,6 @@ public class ModifyPartController implements Initializable {
     @FXML
     void onActionModifyOutSourced(ActionEvent event){
         if(modifyOutSourced.isSelected()){
-            System.out.println("OutSourced clicked!");
             this.isInHouse = false;
             modifyInHouse.setSelected(false);
             modifyOutSourced.setSelected(true);
