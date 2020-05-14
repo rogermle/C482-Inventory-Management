@@ -86,7 +86,7 @@ public class MainScreenController implements Initializable {
         catch(IOException e) {
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Please select a valid Part");
-            alert.setTitle("Selection Error");
+            alert.setTitle("Part Selection Error");
             alert.show();
         }
 
@@ -98,7 +98,7 @@ public class MainScreenController implements Initializable {
             if( selectedPart == null) {
                 alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText("Please select a valid Part");
-                alert.setTitle("Selection Error");
+                alert.setTitle("Part Selection Error");
                 alert.show();
             } else {
                 alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -148,15 +148,22 @@ public class MainScreenController implements Initializable {
     @FXML void onActionProductModify(ActionEvent event) throws IOException {
         try{
             Product selectedProduct = productsTableView.getSelectionModel().getSelectedItem();
-            int selectedIndex = Inventory.getAllProducts().indexOf(selectedProduct);
-            stage = (Stage) ((Button)event.getSource()).getScene().getWindow();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View_Controller/ModifyProduct.fxml"));
-            View_Controller.ModifyProductController controller = new View_Controller.ModifyProductController(selectedIndex, selectedProduct);
-            loader.setController(controller);
-            Parent root = loader.load();
-            stage.setTitle("Modify Product");
-            stage.setScene(new Scene(root));
-            stage.show();
+            if( selectedProduct == null ){
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Product Selection Error");
+                alert.setContentText("Please select a valid Product");
+                alert.show();
+            } else {
+                int selectedIndex = Inventory.getAllProducts().indexOf(selectedProduct);
+                stage = (Stage) ((Button)event.getSource()).getScene().getWindow();
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/View_Controller/ModifyProduct.fxml"));
+                View_Controller.ModifyProductController controller = new View_Controller.ModifyProductController(selectedIndex, selectedProduct);
+                loader.setController(controller);
+                Parent root = loader.load();
+                stage.setTitle("Modify Product");
+                stage.setScene(new Scene(root));
+                stage.show();
+            }
         } catch(IOException e) {
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText(e.getMessage());

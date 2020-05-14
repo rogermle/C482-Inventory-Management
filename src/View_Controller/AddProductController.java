@@ -24,19 +24,19 @@ import java.util.ResourceBundle;
 public class AddProductController implements Initializable {
 
     @FXML
-    private TextField name;
+    private TextField addName;
 
     @FXML
-    private TextField stock;
+    private TextField addStock;
 
     @FXML
-    private TextField price;
+    private TextField addPrice;
 
     @FXML
-    private TextField min;
+    private TextField addMin;
 
     @FXML
-    private TextField max;
+    private TextField addMax;
 
     @FXML
     private TextField partSearchTxt;
@@ -82,7 +82,7 @@ public class AddProductController implements Initializable {
     void onActionAddPart(ActionEvent event) {
         Part addPart = addPartsTableView.getSelectionModel().getSelectedItem();
         newProduct.addAssociatedPart(addPart);
-        assocPartsTableView.setItems(newProduct.getAllAssociatedParts().sorted());
+        assocPartsTableView.setItems(newProduct.getAllAssociatedParts());
     }
     @FXML
     void onActionDeletePart(ActionEvent event) {
@@ -118,13 +118,13 @@ public class AddProductController implements Initializable {
 
     @FXML
     void onActionAddProductSave(ActionEvent event) throws IOException {
-        int newStock = Integer.parseInt(stock.getText());
-        int newMin = Integer.parseInt(min.getText());
-        int newMax = Integer.parseInt(max.getText());
-        double newPrice = Double.parseDouble(price.getText());
+        int newStock = Integer.parseInt(addStock.getText());
+        int newMin = Integer.parseInt(addMin.getText());
+        int newMax = Integer.parseInt(addMax.getText());
+        double newPrice = Double.parseDouble(addPrice.getText());
         // Assumes ALL user input is valid
         newProduct.setId(Inventory.getAllProductsCount() +1);
-        newProduct.setName(name.getText());
+        newProduct.setName(addName.getText());
         newProduct.setStock(newStock);
         newProduct.setMin(newMin);
         newProduct.setMax(newMax);

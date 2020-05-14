@@ -44,11 +44,11 @@
                         <Font name="Times New Roman" size="24.0" />
                      </font></Label>
                         <TextField disable="true" layoutX="140.0" layoutY="60.0" prefHeight="27.0" prefWidth="226.0" style="-fx-background-color: silver;" text="Auto Gen - Disabled" />
-                        <TextField fx:id="name" layoutX="140.0" layoutY="100.0" prefHeight="27.0" prefWidth="226.0" promptText="Product Name" />
-                        <TextField fx:id="stock" layoutX="140.0" layoutY="140.0" prefHeight="27.0" prefWidth="226.0" promptText="Inventory" />
-                        <TextField fx:id="price" layoutX="140.0" layoutY="180.0" prefHeight="27.0" prefWidth="226.0" promptText="Product Price" />
-                        <TextField fx:id="max" layoutX="140.0" layoutY="220.0" prefHeight="27.0" prefWidth="86.0" promptText="Max" />
-                        <TextField fx:id="min" layoutX="279.0" layoutY="220.0" prefHeight="25.0" prefWidth="86.0" promptText="Min" />
+                        <TextField fx:id="addName" layoutX="140.0" layoutY="100.0" prefHeight="27.0" prefWidth="226.0" promptText="Product Name" />
+                        <TextField fx:id="addStock" layoutX="140.0" layoutY="140.0" prefHeight="27.0" prefWidth="226.0" promptText="Inventory" />
+                        <TextField fx:id="addPrice" layoutX="140.0" layoutY="180.0" prefHeight="27.0" prefWidth="226.0" promptText="Product Price" />
+                        <TextField fx:id="addMax" layoutX="140.0" layoutY="220.0" prefHeight="27.0" prefWidth="86.0" promptText="Max" />
+                        <TextField fx:id="addMin" layoutX="279.0" layoutY="220.0" prefHeight="25.0" prefWidth="86.0" promptText="Min" />
                     </children>
                 </AnchorPane>
                 <AnchorPane layoutX="415.0" layoutY="69.0" prefHeight="196.0" prefWidth="390.0">
