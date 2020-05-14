@@ -43,44 +43,44 @@
                      <font>
                         <Font name="Times New Roman" size="24.0" />
                      </font></Label>
-                        <TextField layoutX="140.0" layoutY="60.0" prefHeight="27.0" prefWidth="226.0" style="-fx-background-color: silver;" text="Auto Gen - Disabled" />
+                        <TextField disable="true" layoutX="140.0" layoutY="60.0" prefHeight="27.0" prefWidth="226.0" style="-fx-background-color: silver;" text="Auto Gen - Disabled" />
                         <TextField fx:id="name" layoutX="140.0" layoutY="100.0" prefHeight="27.0" prefWidth="226.0" promptText="Product Name" />
-                        <TextField fx:id="Inventory" layoutX="140.0" layoutY="140.0" prefHeight="27.0" prefWidth="226.0" promptText="Inventory" />
-                        <TextField fx:id="Price" layoutX="140.0" layoutY="180.0" prefHeight="27.0" prefWidth="226.0" promptText="Product Price" />
-                        <TextField fx:id="Max" layoutX="140.0" layoutY="220.0" prefHeight="27.0" prefWidth="86.0" promptText="Max" />
-                        <TextField fx:id="Min" layoutX="279.0" layoutY="220.0" prefHeight="25.0" prefWidth="86.0" promptText="Min" />
+                        <TextField fx:id="stock" layoutX="140.0" layoutY="140.0" prefHeight="27.0" prefWidth="226.0" promptText="Inventory" />
+                        <TextField fx:id="price" layoutX="140.0" layoutY="180.0" prefHeight="27.0" prefWidth="226.0" promptText="Product Price" />
+                        <TextField fx:id="max" layoutX="140.0" layoutY="220.0" prefHeight="27.0" prefWidth="86.0" promptText="Max" />
+                        <TextField fx:id="min" layoutX="279.0" layoutY="220.0" prefHeight="25.0" prefWidth="86.0" promptText="Min" />
                     </children>
                 </AnchorPane>
                 <AnchorPane layoutX="415.0" layoutY="69.0" prefHeight="196.0" prefWidth="390.0">
                     <children>
-                        <TextField fx:id="addPartsSearchBox" layoutX="10.0" layoutY="10.0" prefHeight="27.0" prefWidth="301.0" />
-                        <Button id="addProductSearchBtn" fx:id="addProdSearchButton" layoutX="319.0" layoutY="10.0" mnemonicParsing="false" text="Search" />
-                        <Button id="addProductAddBtn" fx:id="addProdAddButton" layoutX="275.0" layoutY="170.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="72.0" text="Add" />
-                        <TableView fx:id="partsAddTable" layoutX="9.0" layoutY="40.0" prefHeight="125.0" prefWidth="369.0">
+                        <TextField fx:id="partSearchTxt" layoutX="10.0" layoutY="10.0" prefHeight="27.0" prefWidth="301.0" />
+                        <Button id="partSearchBtn" fx:id="partSearchBtn" layoutX="319.0" layoutY="10.0" mnemonicParsing="false" onAction="#onActionAddPartSearch" text="Search" />
+                        <Button id="addPartToProductBtn" fx:id="addPartToProductBtn" layoutX="275.0" layoutY="170.0" mnemonicParsing="false" onAction="#onActionAddPart" prefHeight="25.0" prefWidth="72.0" text="Add" />
+                        <TableView fx:id="addPartsTableView" layoutX="9.0" layoutY="40.0" prefHeight="125.0" prefWidth="369.0">
                             <columns>
-                                <TableColumn fx:id="addProdPartIdCol" prefWidth="58.0" text="Part ID" />
-                                <TableColumn fx:id="addProdPartNameCol" prefWidth="72.0" text="Part Name" />
-                                <TableColumn fx:id="addProdInvCol" prefWidth="109.0" text="Inventory Level" />
-                                <TableColumn fx:id="addProdPartPriceCol" prefWidth="129.0" text="Price/Cost pet Unit" />
+                                <TableColumn fx:id="partIdCol" prefWidth="58.0" text="Part ID" />
+                                <TableColumn fx:id="partNameCol" prefWidth="72.0" text="Part Name" />
+                                <TableColumn fx:id="partStockCol" prefWidth="109.0" text="Inventory Level" />
+                                <TableColumn fx:id="partPriceCol" prefWidth="129.0" text="Price Per Unit" />
                             </columns>
                         </TableView>
                     </children>
                 </AnchorPane>
                 <AnchorPane layoutX="415.0" layoutY="281.0" prefHeight="196.0" prefWidth="390.0">
                     <children>
-                        <Button id="addProductDeleteBtn" fx:id="addProdDeleteButton" layoutX="275.0" layoutY="170.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="72.0" text="Delete" />
-                        <TableView fx:id="partsDeleteTable" layoutX="9.0" layoutY="40.0" prefHeight="125.0" prefWidth="369.0">
+                        <Button id="assocPartsDelBtn" fx:id="assocPartsDelBtn" layoutX="275.0" layoutY="170.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="72.0" text="Delete" onAction="#onActionDeletePart"/>
+                        <TableView fx:id="assocPartsTableView" layoutX="9.0" layoutY="40.0" prefHeight="125.0" prefWidth="369.0">
                             <columns>
-                                <TableColumn fx:id="addProdPartIdColAssoc" prefWidth="58.0" text="Part ID" />
-                                <TableColumn fx:id="addProdPartNameColAssoc" prefWidth="72.0" text="Part Name" />
-                                <TableColumn fx:id="addProdInvColAssoc" prefWidth="109.0" text="Inventory Level" />
-                                <TableColumn fx:id="addProdPartPriceColAssoc" prefWidth="129.0" text="Price/Cost pet Unit" />
+                                <TableColumn fx:id="assocPartsIdCol" prefWidth="58.0" text="Part ID" />
+                                <TableColumn fx:id="assocPartsNameCol" prefWidth="72.0" text="Part Name" />
+                                <TableColumn fx:id="assocPartsStockCol" prefWidth="109.0" text="Inventory Level" />
+                                <TableColumn fx:id="assocPriceCol" prefWidth="129.0" text="Price per Unit" />
                             </columns>
                         </TableView>
                     </children>
                 </AnchorPane>
                 <Button id="addProductCancelBtn" fx:id="addProductsCancelButton" layoutX="693.0" layoutY="500.0" mnemonicParsing="false" onAction="#onActionAddProductCancel" prefHeight="25.0" prefWidth="72.0" text="Cancel" />
-                <Button id="addProductSaveBtn" fx:id="addProdSaveButton" layoutX="610.0" layoutY="500.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" text="Save" />
+                <Button id="addProductSaveBtn" fx:id="addProdSaveButton" layoutX="610.0" layoutY="500.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" text="Save" onAction="#onActionAddProductSave"/>
             </children>
         </AnchorPane>
     </children>

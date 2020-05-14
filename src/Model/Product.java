@@ -1,12 +1,13 @@
 package Model;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 /**
  * @author Roger Le
  */
 public class Product {
-    private ObservableList<Part> associatedParts;
+    private ObservableList<Part> associatedParts = FXCollections.observableArrayList();
     private int id;
     private String name;
     private double price = 0.0;
@@ -14,6 +15,10 @@ public class Product {
     private int min;
     private int max;
     private double cost;
+
+    public Product() {
+
+    }
 
     public Product(int id, String name, double price, int stock, int min, int max) {
         setId(id);
@@ -97,8 +102,8 @@ public class Product {
         return associatedParts;
     }
 
-    public boolean validate() {
-        return true;
+    public boolean isValid(int stock, int min, int max){
+        return stock >= min && stock <= max;
     }
 
 

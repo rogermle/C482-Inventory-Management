@@ -54,7 +54,7 @@ public class MainScreenController implements Initializable {
         alert.setTitle("Exit Inventory Management System?");
         alert.setContentText("Exit & Quit?");
         Optional<ButtonType> option = alert.showAndWait();
-        if(option.get() == ButtonType.OK){
+        if(option.isPresent() && option.get() == ButtonType.OK){
             System.exit(0);
         }
     }
@@ -217,7 +217,7 @@ public class MainScreenController implements Initializable {
         partNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         partStockCol.setCellValueFactory(new PropertyValueFactory<>("stock"));
         partInvCol.setCellValueFactory(new PropertyValueFactory<>("inv"));
-        partPriceCol.setCellValueFactory(new PropertyValueFactory<Part, Double>("price"));
+        partPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
         partsTableView.setItems(Inventory.getAllParts());
 
         //Products
@@ -225,7 +225,7 @@ public class MainScreenController implements Initializable {
         productNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         productStockCol.setCellValueFactory(new PropertyValueFactory<>("stock"));
         productInvCol.setCellValueFactory(new PropertyValueFactory<>("inv"));
-        productPriceCol.setCellValueFactory(new PropertyValueFactory<Part, Double>("price"));
+        productPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
         productsTableView.setItems(Inventory.getAllProducts());
     }
 

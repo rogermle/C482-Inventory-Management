@@ -35,7 +35,7 @@ public class Inventory {
         if(!allParts.isEmpty() && !partName.equals(""))
         {
             for (Part part : allParts) {
-                if (part.getName().toLowerCase().contains(partName)) {
+                if (part.getName().toLowerCase().contains(partName.toLowerCase())) {
                     matches.add(part);
                 }
             }
@@ -49,7 +49,7 @@ public class Inventory {
         if(!allProducts.isEmpty() && !productName.equals(""))
         {
             for (Product product : allProducts) {
-                if (product.getName().toLowerCase().contains(productName)) {
+                if (product.getName().toLowerCase().contains(productName.toLowerCase())) {
                     matches.add(product);
                 }
             }
