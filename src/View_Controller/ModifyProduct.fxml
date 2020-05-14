@@ -14,7 +14,7 @@
             <children>
                 <AnchorPane layoutX="14.0" layoutY="69.0" prefHeight="310.0" prefWidth="375.0">
                     <children>
-                        <Label layoutX="12.0" layoutY="8.0" prefHeight="28.0" prefWidth="149.0" text="Modify Product">
+                        <Label layoutX="12.0" layoutY="8.0" prefHeight="28.0" prefWidth="169.0" text="Modify Product">
                             <font>
                                 <Font name="Times New Roman Bold" size="24.0" />
                             </font>
@@ -53,10 +53,10 @@
                 </AnchorPane>
                 <AnchorPane layoutX="415.0" layoutY="69.0" prefHeight="196.0" prefWidth="390.0">
                     <children>
-                        <TextField fx:id="addProductsSearchBox" layoutX="162.0" layoutY="10.0" prefHeight="25.0" prefWidth="149.0" />
+                        <TextField fx:id="modifyAddPartSearchBox" layoutX="9.0" layoutY="10.0" prefHeight="27.0" prefWidth="302.0" />
                         <Button id="addProductSearchBtn" fx:id="addProdSearchButton" layoutX="319.0" layoutY="10.0" mnemonicParsing="false" text="Search" />
                         <Button id="addProductAddBtn" fx:id="addProdAddButton" layoutX="275.0" layoutY="170.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="72.0" text="Add" />
-                        <TableView fx:id="partsTable" layoutX="9.0" layoutY="40.0" prefHeight="125.0" prefWidth="369.0">
+                        <TableView fx:id="modifyPartsTable" layoutX="9.0" layoutY="40.0" prefHeight="125.0" prefWidth="369.0">
                             <columns>
                                 <TableColumn fx:id="addProdPartIdCol" prefWidth="58.0" text="Part ID" />
                                 <TableColumn fx:id="addProdPartNameCol" prefWidth="72.0" text="Part Name" />
@@ -69,7 +69,7 @@
                 <AnchorPane layoutX="415.0" layoutY="281.0" prefHeight="196.0" prefWidth="390.0">
                     <children>
                         <Button id="addProductDeleteBtn" fx:id="addProdDeleteButton" layoutX="275.0" layoutY="170.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="72.0" text="Delete" />
-                        <TableView fx:id="partsTable" layoutX="9.0" layoutY="40.0" prefHeight="125.0" prefWidth="369.0">
+                        <TableView fx:id="modifyProductsTable" layoutX="9.0" layoutY="40.0" prefHeight="125.0" prefWidth="369.0">
                             <columns>
                                 <TableColumn fx:id="addProdPartIdColAssoc" prefWidth="58.0" text="Part ID" />
                                 <TableColumn fx:id="addProdPartNameColAssoc" prefWidth="72.0" text="Part Name" />
@@ -79,7 +79,7 @@
                         </TableView>
                     </children>
                 </AnchorPane>
-                <Button id="addProductCancelBtn" fx:id="addProductsCancelButton" layoutX="693.0" layoutY="500.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="72.0" text="Cancel" />
+                <Button id="addProductCancelBtn" fx:id="addProductCancelButton" layoutX="693.0" layoutY="500.0" mnemonicParsing="false" onAction="#onActionModifyProductCancel" prefHeight="25.0" prefWidth="72.0" text="Cancel" />
                 <Button id="addProductSaveBtn" fx:id="addProdSaveButton" layoutX="610.0" layoutY="500.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" text="Save" />
             </children>
         </AnchorPane>

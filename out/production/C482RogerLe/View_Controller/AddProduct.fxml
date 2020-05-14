@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="659.0" prefWidth="830.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" >
+<AnchorPane prefHeight="659.0" prefWidth="830.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
     <opaqueInsets>
         <Insets />
     </opaqueInsets>
@@ -44,16 +44,16 @@
                         <Font name="Times New Roman" size="24.0" />
                      </font></Label>
                         <TextField layoutX="140.0" layoutY="60.0" prefHeight="27.0" prefWidth="226.0" style="-fx-background-color: silver;" text="Auto Gen - Disabled" />
-                        <TextField fx:id="name" layoutX="140.0" layoutY="100.0" prefHeight="27.0" prefWidth="226.0" text="Product Name" />
-                        <TextField fx:id="Inventory" layoutX="140.0" layoutY="140.0" prefHeight="27.0" prefWidth="226.0" text="Inventory" />
-                        <TextField fx:id="Price" layoutX="140.0" layoutY="180.0" prefHeight="27.0" prefWidth="226.0" text="Product Price" />
-                        <TextField fx:id="Max" layoutX="140.0" layoutY="220.0" prefHeight="27.0" prefWidth="86.0" text="Max" />
-                        <TextField fx:id="Min" layoutX="279.0" layoutY="220.0" prefHeight="25.0" prefWidth="86.0" text="Min" />
+                        <TextField fx:id="name" layoutX="140.0" layoutY="100.0" prefHeight="27.0" prefWidth="226.0" promptText="Product Name" />
+                        <TextField fx:id="Inventory" layoutX="140.0" layoutY="140.0" prefHeight="27.0" prefWidth="226.0" promptText="Inventory" />
+                        <TextField fx:id="Price" layoutX="140.0" layoutY="180.0" prefHeight="27.0" prefWidth="226.0" promptText="Product Price" />
+                        <TextField fx:id="Max" layoutX="140.0" layoutY="220.0" prefHeight="27.0" prefWidth="86.0" promptText="Max" />
+                        <TextField fx:id="Min" layoutX="279.0" layoutY="220.0" prefHeight="25.0" prefWidth="86.0" promptText="Min" />
                     </children>
                 </AnchorPane>
                 <AnchorPane layoutX="415.0" layoutY="69.0" prefHeight="196.0" prefWidth="390.0">
                     <children>
-                        <TextField fx:id="addProductsSearchBox" layoutX="162.0" layoutY="10.0" prefHeight="25.0" prefWidth="149.0" />
+                        <TextField fx:id="addPartsSearchBox" layoutX="10.0" layoutY="10.0" prefHeight="27.0" prefWidth="301.0" />
                         <Button id="addProductSearchBtn" fx:id="addProdSearchButton" layoutX="319.0" layoutY="10.0" mnemonicParsing="false" text="Search" />
                         <Button id="addProductAddBtn" fx:id="addProdAddButton" layoutX="275.0" layoutY="170.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="72.0" text="Add" />
                         <TableView fx:id="partsAddTable" layoutX="9.0" layoutY="40.0" prefHeight="125.0" prefWidth="369.0">
@@ -79,7 +79,7 @@
                         </TableView>
                     </children>
                 </AnchorPane>
-                <Button id="addProductCancelBtn" fx:id="addProductsCancelButton" layoutX="693.0" layoutY="500.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="72.0" text="Cancel" />
+                <Button id="addProductCancelBtn" fx:id="addProductsCancelButton" layoutX="693.0" layoutY="500.0" mnemonicParsing="false" onAction="#onActionAddProductCancel" prefHeight="25.0" prefWidth="72.0" text="Cancel" />
                 <Button id="addProductSaveBtn" fx:id="addProdSaveButton" layoutX="610.0" layoutY="500.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" text="Save" />
             </children>
         </AnchorPane>

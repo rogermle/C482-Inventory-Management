@@ -4,9 +4,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="350.0" prefWidth="425.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" >
+<AnchorPane prefHeight="350.0" prefWidth="425.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <Label id="addPartLbl" layoutX="7.0" prefHeight="25.0" prefWidth="105.0" text="Add Part">
+        <Label id="addPartLbl" layoutX="7.0" prefHeight="28.0" prefWidth="136.0" text="Modify Part">
             <font>
                 <Font name="Times New Roman Bold" size="24.0" />
             </font>

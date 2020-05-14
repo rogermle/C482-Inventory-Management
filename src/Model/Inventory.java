@@ -34,9 +34,9 @@ public class Inventory {
         ObservableList<Part> matches = FXCollections.observableArrayList();
         if(!allParts.isEmpty() && !partName.equals(""))
         {
-            for (Part allPart : allParts) {
-                if (allPart.getName().contains(partName)) {
-                    matches.add(allPart);
+            for (Part part : allParts) {
+                if (part.getName().toLowerCase().contains(partName)) {
+                    matches.add(part);
                 }
             }
             return matches;
@@ -48,9 +48,9 @@ public class Inventory {
         ObservableList<Product> matches = FXCollections.observableArrayList();
         if(!allProducts.isEmpty() && !productName.equals(""))
         {
-            for (Product allProduct : allProducts) {
-                if (allProduct.getName().contains(productName)) {
-                    matches.add(allProduct);
+            for (Product product : allProducts) {
+                if (product.getName().toLowerCase().contains(productName)) {
+                    matches.add(product);
                 }
             }
             return matches;

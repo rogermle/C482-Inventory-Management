@@ -146,7 +146,6 @@ public class MainScreenController implements Initializable {
     }
 
     @FXML void onActionProductModify(ActionEvent event) throws IOException {
-        System.out.println("Product Modify Clicked!");
         try{
             Product selectedProduct = productsTableView.getSelectionModel().getSelectedItem();
             int selectedIndex = Inventory.getAllProducts().indexOf(selectedProduct);
@@ -168,7 +167,30 @@ public class MainScreenController implements Initializable {
     }
 
     @FXML void onActionProductDelete(ActionEvent event) throws  IOException {
-        System.out.println("Product Delete Clicked!");
+        try{
+            Product selectedProduct = productsTableView.getSelectionModel().getSelectedItem();
+            if( selectedProduct == null) {
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Please select a valid Product");
+                alert.setTitle("Selection Error");
+                alert.show();
+            } else {
+                alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Delete Part?");
+                alert.setContentText("Are you sure you want to delete " + selectedProduct.getName() + "?");
+                Optional<ButtonType> option = alert.showAndWait();
+                if(option.get() == ButtonType.OK) {
+                    Inventory.deleteProduct(selectedProduct);
+                    productsTableView.setItems(Inventory.getAllProducts());
+                }
+            }
+        }
+        catch (Exception e) {
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText(e.getMessage());
+            alert.setTitle("No Product Selected Error");
+            alert.show();
+        }
     }
 
     @FXML void onActionProductSearch(ActionEvent event) throws IOException{
