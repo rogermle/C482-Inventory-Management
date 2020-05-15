@@ -119,12 +119,12 @@ public class ModifyProductController implements Initializable {
         int newMax = Integer.parseInt(modifyMax.getText());
         double newPrice = Double.parseDouble(modifyPrice.getText());
         // Assumes ALL user input is valid
-        this.product.setName(modifyName.getText());
-        this.product.setStock(newInventory);
-        this.product.setMin(newMin);
-        this.product.setMax(newMax);
-        this.product.setPrice(newPrice);
         if( this.product.isValid(newInventory, newMin, newMax)) {
+            this.product.setName(modifyName.getText());
+            this.product.setStock(newInventory);
+            this.product.setMin(newMin);
+            this.product.setMax(newMax);
+            this.product.setPrice(newPrice);
             Inventory.updateProduct(this.index, this.product);
             // Redirect to Main Screen
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/View_Controller/MainScreen.fxml"));

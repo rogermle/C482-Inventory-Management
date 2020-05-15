@@ -56,11 +56,15 @@ public class ModifyPartController implements Initializable {
 
     private Inventory inv;
 
+    private Alert alert;
+
     private boolean isInHouse;
 
     private final Part part;
 
     private final int index;
+
+
 
     @FXML
     void onActionModifyInHouse(ActionEvent event) {
@@ -87,57 +91,49 @@ public class ModifyPartController implements Initializable {
     @FXML
     void onActionModifySave(ActionEvent event){
         try{
-            if(modifyInHouse.isSelected()){
-                InHouse newPart = new InHouse();
-                newPart.setId(part.getId());
-                newPart.setName(modifyName.getText());
-                newPart.setStock(Integer.parseInt(modifyInventory.getText()));
-                newPart.setPrice(Double.parseDouble(modifyPrice.getText()));
-                newPart.setMin(Integer.parseInt(modifyMin.getText()));
-                newPart.setMax(Integer.parseInt(modifyMax.getText()));
-                newPart.setMachineId(Integer.parseInt(modifyCompany.getText()));
-                Inventory.updatePart(this.index, newPart);
+            Part newPart;
+            int stock = Integer.parseInt(modifyInventory.getText());
+            int min = Integer.parseInt(modifyMin.getText());
+            int max = Integer.parseInt(modifyMax.getText());
+            if(this.isInHouse){
+                newPart = new InHouse();
+                setPart(newPart);
+                ((InHouse) newPart).setMachineId(Integer.parseInt(modifyCompany.getText()));
             }
             else {
-                OutSourced newPart = new OutSourced();
-                newPart.setId(part.getId());
-                newPart.setName(modifyName.getText());
-                newPart.setStock(Integer.parseInt(modifyInventory.getText()));
-                newPart.setPrice(Double.parseDouble(modifyPrice.getText()));
-                newPart.setMin(Integer.parseInt(modifyMin.getText()));
-                newPart.setMax(Integer.parseInt(modifyMax.getText()));
-                newPart.setCompanyName(modifyCompany.getText());
-                Inventory.updatePart(this.index, newPart);
+                newPart = new OutSourced();
+                setPart(newPart);
+                ((OutSourced) newPart).setCompanyName(modifyCompany.getText());
             }
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View_Controller/MainScreen.fxml"));
-            View_Controller.MainScreenController controller = new View_Controller.MainScreenController(inv);
-            loader.setController(controller);
-            Parent root = loader.load();
-            stage = (Stage) ((Button)event.getSource()).getScene().getWindow();
-            stage.setTitle("Inventory Management System");
-            stage.setScene(new Scene(root));
-            stage.show();
+
+            if(newPart.isValid(stock, min, max)){
+                Inventory.updatePart(this.index, newPart);
+                mainScreen(event);
+            } else {
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Invalid Inventory Error");
+                alert.setContentText("Entered Stock Level: " + newPart.getStock() +"\r\nMinimum: " + newPart.getMin() +
+                        "\r\nMaximum: " + newPart.getMax());
+                alert.show();
+            }
+
         }
         catch(Exception e){
-            System.out.println(e.getMessage());
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Invalid Inventory Error");
+            alert.setContentText(e.getMessage());
+            alert.show();
         }
     }
 
     @FXML
     void onActionModifyCancel(ActionEvent event) throws IOException {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Exit Modify Part?");
         alert.setContentText("Exit & Return to Main Screen?");
         Optional<ButtonType> option = alert.showAndWait();
         if(option.isPresent() && option.get()  == ButtonType.OK) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View_Controller/MainScreen.fxml"));
-            View_Controller.MainScreenController controller = new View_Controller.MainScreenController(inv);
-            loader.setController(controller);
-            Parent root = loader.load();
-            stage = (Stage) ((Button)event.getSource()).getScene().getWindow();
-            stage.setTitle("Inventory Management System");
-            stage.setScene(new Scene(root));
-            stage.show();
+            mainScreen(event);
         }
     }
 
@@ -165,5 +161,25 @@ public class ModifyPartController implements Initializable {
             modifyCompany.setText(((OutSourced) part).getCompanyName());
         }
 
+    }
+
+    private void setPart(Part modifyPart){
+        modifyPart.setId(part.getId());
+        modifyPart.setName(modifyName.getText());
+        modifyPart.setStock(Integer.parseInt(modifyInventory.getText()));
+        modifyPart.setPrice(Double.parseDouble(modifyPrice.getText()));
+        modifyPart.setMin(Integer.parseInt(modifyMin.getText()));
+        modifyPart.setMax(Integer.parseInt(modifyMax.getText()));
+    }
+
+    private void mainScreen(ActionEvent event) throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View_Controller/MainScreen.fxml"));
+        View_Controller.MainScreenController controller = new View_Controller.MainScreenController(inv);
+        loader.setController(controller);
+        Parent root = loader.load();
+        stage = (Stage) ((Button)event.getSource()).getScene().getWindow();
+        stage.setTitle("Inventory Management System");
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 }
