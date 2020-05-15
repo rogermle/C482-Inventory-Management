@@ -18,7 +18,6 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class MainScreenController implements Initializable {
-    private Inventory inv;
     private Stage stage;
     private Parent scene;
     private Alert alert;
@@ -61,7 +60,7 @@ public class MainScreenController implements Initializable {
     @FXML void onActionPartAdd(ActionEvent event) throws IOException{
         stage = (Stage) ((Button)event.getSource()).getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/View_Controller/AddPart.fxml"));
-        View_Controller.AddPartController controller = new View_Controller.AddPartController(inv);
+        View_Controller.AddPartController controller = new View_Controller.AddPartController();
         loader.setController(controller);
         Parent root = loader.load();
         stage.setTitle("Add Part");
@@ -136,7 +135,7 @@ public class MainScreenController implements Initializable {
     @FXML void onActionProductAdd(ActionEvent event) throws IOException {
         stage = (Stage) ((Button)event.getSource()).getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/View_Controller/AddProduct.fxml"));
-        View_Controller.AddProductController controller = new View_Controller.AddProductController(inv);
+        View_Controller.AddProductController controller = new View_Controller.AddProductController();
         loader.setController(controller);
         Parent root = loader.load();
         stage.setTitle("Add Product");
@@ -235,7 +234,6 @@ public class MainScreenController implements Initializable {
         productsTableView.setItems(Inventory.getAllProducts());
     }
 
-    public MainScreenController(Inventory inv) {
-        this.inv = inv;
+    public MainScreenController() {
     }
 }

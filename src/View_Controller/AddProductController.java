@@ -54,7 +54,6 @@ public class AddProductController implements Initializable {
     @FXML private TableColumn<Part, Integer> assocPartsStockCol = new TableColumn<Part, Integer>();
     @FXML private TableColumn<Part, Double> assocPriceCol = new TableColumn<Part, Double>();
 
-    private Inventory inv;
     private Stage stage;
     private Product newProduct;
     private Alert alert;
@@ -157,13 +156,12 @@ public class AddProductController implements Initializable {
         assocPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
     }
 
-    public AddProductController(Inventory inv) {
-        this.inv = inv;
+    public AddProductController() {
     }
 
     private void mainScreen(ActionEvent event) throws IOException{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/View_Controller/MainScreen.fxml"));
-        View_Controller.MainScreenController controller = new View_Controller.MainScreenController(inv);
+        View_Controller.MainScreenController controller = new View_Controller.MainScreenController();
         loader.setController(controller);
         Parent root = loader.load();
         stage = (Stage) ((Button)event.getSource()).getScene().getWindow();

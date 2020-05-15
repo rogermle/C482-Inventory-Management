@@ -54,8 +54,6 @@ public class ModifyPartController implements Initializable {
 
     private Parent scene;
 
-    private Inventory inv;
-
     private Alert alert;
 
     private boolean isInHouse;
@@ -174,7 +172,7 @@ public class ModifyPartController implements Initializable {
 
     private void mainScreen(ActionEvent event) throws IOException{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/View_Controller/MainScreen.fxml"));
-        View_Controller.MainScreenController controller = new View_Controller.MainScreenController(inv);
+        View_Controller.MainScreenController controller = new View_Controller.MainScreenController();
         loader.setController(controller);
         Parent root = loader.load();
         stage = (Stage) ((Button)event.getSource()).getScene().getWindow();

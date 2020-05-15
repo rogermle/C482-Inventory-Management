@@ -60,7 +60,6 @@ public class ModifyProductController implements Initializable {
     @FXML private TableColumn<Part, Integer> modifyAssocPartsStockCol = new TableColumn<Part, Integer>();
     @FXML private TableColumn<Part, Double> modifyAssocPriceCol = new TableColumn<Part, Double>();
 
-    private Inventory inv;
     private Product product;
     private final int index;
     private Stage stage;
@@ -185,7 +184,7 @@ public class ModifyProductController implements Initializable {
 
     private void mainScreen(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/View_Controller/MainScreen.fxml"));
-        View_Controller.MainScreenController controller = new View_Controller.MainScreenController(inv);
+        View_Controller.MainScreenController controller = new View_Controller.MainScreenController();
         loader.setController(controller);
         Parent root = loader.load();
         stage = (Stage) ((Button)event.getSource()).getScene().getWindow();

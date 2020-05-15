@@ -13,11 +13,10 @@ import javafx.scene.Scene;
 public class InventoryProgram extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Inventory inv = new Inventory();
-        addTestData(inv);
+        addTestData();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/View_Controller/MainScreen.fxml"));
-        View_Controller.MainScreenController controller = new View_Controller.MainScreenController(inv);
+        View_Controller.MainScreenController controller = new View_Controller.MainScreenController();
         loader.setController(controller);
         Parent root = loader.load();
         primaryStage.setTitle("Inventory Management System");
@@ -40,7 +39,7 @@ public class InventoryProgram extends Application {
         launch(args);
     }
 
-    void addTestData(Inventory inv) {
+    void addTestData() {
         //Add InHouse Parts
         Part a1 = new InHouse(1, "Part A1", 2.99, 10, 5, 100, 101);
         Part a2 = new InHouse(3, "Part A2", 4.99, 11, 5, 100, 103);
