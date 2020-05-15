@@ -15,7 +15,7 @@ public class InventoryProgram extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Inventory inv = new Inventory();
-        addTestData(inv);
+        //addTestData(inv);
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/View_Controller/MainScreen.fxml"));
         View_Controller.MainScreenController controller = new View_Controller.MainScreenController(inv);

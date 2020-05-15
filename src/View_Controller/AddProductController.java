@@ -123,7 +123,7 @@ public class AddProductController implements Initializable {
         int newMax = Integer.parseInt(addMax.getText());
         double newPrice = Double.parseDouble(addPrice.getText());
         // Assumes ALL user input is valid
-        newProduct.setId(Inventory.getAllProductsCount() +1);
+        newProduct.setId(Inventory.getNextProductId());
         newProduct.setName(addName.getText());
         newProduct.setStock(newStock);
         newProduct.setMin(newMin);

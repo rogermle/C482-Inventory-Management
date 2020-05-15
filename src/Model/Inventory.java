@@ -6,19 +6,19 @@ import javafx.collections.ObservableList;
 public class Inventory {
     private static ObservableList<Part> allParts;
     private static ObservableList<Product> allProducts;
-    private static int allPartsCount;
-    private static int allProductsCount;
+    private static int nextPartId;
+    private static int nextProductId;
 
     public Inventory() {
         allParts = FXCollections.observableArrayList();
         allProducts = FXCollections.observableArrayList();
-        allPartsCount = 0;
-        allProductsCount = 0;
+        nextPartId = 1;
+        nextProductId = 1;
     }
     public static void addPart(Part newPart) {
         if(newPart != null) {
             allParts.add(newPart);
-            allPartsCount++;
+            nextPartId++;
         }
 
     }
@@ -26,7 +26,7 @@ public class Inventory {
     public static void addProduct(Product newProduct) {
         if(newProduct != null) {
             allProducts.add(newProduct);
-            allProductsCount++;
+            nextProductId++;
         }
     }
 
@@ -75,7 +75,6 @@ public class Inventory {
             for(int i = 0; i < allParts.size(); i++) {
                 if(allParts.get(i) == delPart){
                     allParts.remove(i);
-                    allPartsCount--;
                     return true;
                 }
             }
@@ -88,7 +87,6 @@ public class Inventory {
             for(int i = 0; i < allProducts.size(); i++) {
                 if(allProducts.get(i) == delProduct){
                     allProducts.remove(i);
-                    allProductsCount--;
                     return true;
                 }
             }
@@ -104,13 +102,9 @@ public class Inventory {
         return allProducts;
     }
 
-    public static int getAllPartsCount() {
-        return allPartsCount;
-    }
+    public static int getNextPartId() { return nextPartId;}
 
-    public static int getAllProductsCount() {
-        return allProductsCount;
-    }
+    public static int getNextProductId() { return nextProductId;}
 
 
 

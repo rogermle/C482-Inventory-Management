@@ -97,7 +97,7 @@ public class AddPartController implements Initializable {
 
     @FXML
     public void onActionSave(ActionEvent event) throws IOException{
-        int txtId = Inventory.getAllPartsCount() + 1;
+        int txtId = Inventory.getNextPartId();
         String txtName = this.name.getText();
         int txtInv = Integer.parseInt(this.inventory.getText());
         double txtPrice = Double.parseDouble(this.price.getText());
