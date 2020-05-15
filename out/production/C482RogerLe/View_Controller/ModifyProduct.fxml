@@ -5,83 +5,98 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="659.0" prefWidth="830.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="659.0" prefWidth="830.0" xmlns="http://javafx.com/javafx/10.0.2-internal"
+            xmlns:fx="http://javafx.com/fxml/1">
     <opaqueInsets>
-        <Insets />
+        <Insets/>
     </opaqueInsets>
-    <children>
-        <AnchorPane layoutX="10.0" layoutY="40.0" prefHeight="600.0" prefWidth="800.0">
-            <children>
-                <AnchorPane layoutX="14.0" layoutY="69.0" prefHeight="310.0" prefWidth="375.0">
-                    <children>
-                        <Label layoutX="12.0" layoutY="8.0" prefHeight="28.0" prefWidth="169.0" text="Modify Product">
-                            <font>
-                                <Font name="Times New Roman Bold" size="24.0" />
-                            </font>
-                        </Label>
-                        <Label layoutX="21.0" layoutY="60.0" text="ID">
-                            <font>
-                                <Font name="Times New Roman" size="24.0" />
-                            </font></Label>
-                        <Label layoutX="21.0" layoutY="140.0" text="Inv">
-                            <font>
-                                <Font name="Times New Roman" size="24.0" />
-                            </font></Label>
-                        <Label layoutX="21.0" layoutY="180.0" text="Price/Cost">
-                            <font>
-                                <Font name="Times New Roman" size="24.0" />
-                            </font></Label>
-                        <Label layoutX="21.0" layoutY="220.0" text="Max">
-                            <font>
-                                <Font name="Times New Roman" size="24.0" />
-                            </font></Label>
-                        <Label layoutX="233.0" layoutY="220.0" text="Min">
-                            <font>
-                                <Font name="Times New Roman" size="24.0" />
-                            </font></Label>
-                        <Label layoutX="21.0" layoutY="100.0" prefHeight="28.0" prefWidth="65.0" text="Name">
-                            <font>
-                                <Font name="Times New Roman" size="24.0" />
-                            </font></Label>
-                        <TextField fx:id="modifyId" disable="true" layoutX="140.0" layoutY="60.0" prefHeight="27.0" prefWidth="226.0" style="-fx-background-color: silver;" text="Auto Gen - Disabled" />
-                        <TextField fx:id="modifyName" layoutX="140.0" layoutY="100.0" prefHeight="27.0" prefWidth="226.0" promptText="Product Name" />
-                        <TextField fx:id="modifyInventory" layoutX="140.0" layoutY="140.0" prefHeight="27.0" prefWidth="226.0" promptText="Inventory" />
-                        <TextField fx:id="modifyPrice" layoutX="140.0" layoutY="180.0" prefHeight="27.0" prefWidth="226.0" promptText="Product Price" />
-                        <TextField fx:id="modifyMax" layoutX="140.0" layoutY="220.0" prefHeight="27.0" prefWidth="86.0" promptText="Max" />
-                        <TextField fx:id="modifyMin" layoutX="279.0" layoutY="220.0" prefHeight="25.0" prefWidth="86.0" promptText="Min" />
-                    </children>
-                </AnchorPane>
-                <AnchorPane layoutX="415.0" layoutY="69.0" prefHeight="196.0" prefWidth="390.0">
-                    <children>
-                        <TextField fx:id="modifyPartSearchTxt" layoutX="10.0" layoutY="10.0" prefHeight="27.0" prefWidth="301.0" />
-                        <Button id="modifyPartSearchBtn" fx:id="modifyPartSearchBtn" layoutX="319.0" layoutY="10.0" mnemonicParsing="false" onAction="#onActionModifyPartSearch" text="Search" />
-                        <Button id="modifyPartToProductBtn" fx:id="modifyPartToProductBtn" layoutX="275.0" layoutY="170.0" mnemonicParsing="false" onAction="#onActionModifyAddPart" prefHeight="25.0" prefWidth="72.0" text="Add" />
-                        <TableView fx:id="modifyAddPartsTableView" layoutX="9.0" layoutY="40.0" prefHeight="125.0" prefWidth="369.0">
-                            <columns>
-                                <TableColumn fx:id="modifyPartIdCol" prefWidth="58.0" text="Part ID" />
-                                <TableColumn fx:id="modifyPartNameCol" prefWidth="72.0" text="Part Name" />
-                                <TableColumn fx:id="modifyPartStockCol" prefWidth="109.0" text="Inventory Level" />
-                                <TableColumn fx:id="modifyPartPriceCol" prefWidth="129.0" text="Price Per Unit" />
-                            </columns>
-                        </TableView>
-                    </children>
-                </AnchorPane>
-                <AnchorPane layoutX="415.0" layoutY="281.0" prefHeight="196.0" prefWidth="390.0">
-                    <children>
-                        <Button id="modifyAssocPartsDelBtn" fx:id="modifyAssocPartsDelBtn" layoutX="275.0" layoutY="170.0" mnemonicParsing="false" onAction="#onActionModifyDeletePart" prefHeight="25.0" prefWidth="72.0" text="Delete" />
-                        <TableView fx:id="modifyAssocPartsTableView" layoutX="9.0" layoutY="40.0" prefHeight="125.0" prefWidth="369.0">
-                            <columns>
-                                <TableColumn fx:id="modifyAssocPartsIdCol" prefWidth="58.0" text="Part ID" />
-                                <TableColumn fx:id="modifyAssocPartsNameCol" prefWidth="72.0" text="Part Name" />
-                                <TableColumn fx:id="modifyAssocPartsStockCol" prefWidth="109.0" text="Inventory Level" />
-                                <TableColumn fx:id="modifyAssocPriceCol" prefWidth="129.0" text="Price per Unit" />
-                            </columns>
-                        </TableView>
-                    </children>
-                </AnchorPane>
-                <Button id="modifyProductCancelBtn" fx:id="modifyProductsCancelButton" layoutX="693.0" layoutY="500.0" mnemonicParsing="false" onAction="#onActionModifyProductCancel" prefHeight="25.0" prefWidth="72.0" text="Cancel" />
-                <Button id="modifyProductSaveBtn" fx:id="modifyProdSaveButton" layoutX="610.0" layoutY="500.0" mnemonicParsing="false" onAction="#onActionModifyAddProductSave" prefHeight="25.0" prefWidth="65.0" text="Save" />
-            </children>
+    <AnchorPane layoutX="10.0" layoutY="40.0" prefHeight="600.0" prefWidth="800.0">
+        <AnchorPane layoutX="14.0" layoutY="69.0" prefHeight="310.0" prefWidth="375.0">
+            <Label layoutX="12.0" layoutY="8.0" prefHeight="28.0" prefWidth="169.0" text="Modify Product">
+                <font>
+                    <Font name="Times New Roman Bold" size="24.0"/>
+                </font>
+            </Label>
+            <Label layoutX="21.0" layoutY="60.0" text="ID">
+                <font>
+                    <Font name="Times New Roman" size="24.0"/>
+                </font>
+            </Label>
+            <Label layoutX="21.0" layoutY="140.0" text="Inv">
+                <font>
+                    <Font name="Times New Roman" size="24.0"/>
+                </font>
+            </Label>
+            <Label layoutX="21.0" layoutY="180.0" text="Price/Cost">
+                <font>
+                    <Font name="Times New Roman" size="24.0"/>
+                </font>
+            </Label>
+            <Label layoutX="21.0" layoutY="220.0" text="Max">
+                <font>
+                    <Font name="Times New Roman" size="24.0"/>
+                </font>
+            </Label>
+            <Label layoutX="233.0" layoutY="220.0" text="Min">
+                <font>
+                    <Font name="Times New Roman" size="24.0"/>
+                </font>
+            </Label>
+            <Label layoutX="21.0" layoutY="100.0" prefHeight="28.0" prefWidth="65.0" text="Name">
+                <font>
+                    <Font name="Times New Roman" size="24.0"/>
+                </font>
+            </Label>
+            <TextField fx:id="modifyId" disable="true" layoutX="140.0" layoutY="60.0" prefHeight="27.0"
+                       prefWidth="226.0" style="-fx-background-color: silver;" text="Auto Gen - Disabled"/>
+            <TextField fx:id="modifyName" layoutX="140.0" layoutY="100.0" prefHeight="27.0" prefWidth="226.0"
+                       promptText="Product Name"/>
+            <TextField fx:id="modifyInventory" layoutX="140.0" layoutY="140.0" prefHeight="27.0"
+                       prefWidth="226.0" promptText="Inventory"/>
+            <TextField fx:id="modifyPrice" layoutX="140.0" layoutY="180.0" prefHeight="27.0" prefWidth="226.0"
+                       promptText="Product Price"/>
+            <TextField fx:id="modifyMax" layoutX="140.0" layoutY="220.0" prefHeight="27.0" prefWidth="86.0"
+                       promptText="Max"/>
+            <TextField fx:id="modifyMin" layoutX="279.0" layoutY="220.0" prefHeight="25.0" prefWidth="86.0"
+                       promptText="Min"/>
         </AnchorPane>
-    </children>
+        <AnchorPane layoutX="415.0" layoutY="69.0" prefHeight="196.0" prefWidth="390.0">
+            <TextField fx:id="modifyPartSearchTxt" layoutX="10.0" layoutY="10.0" prefHeight="27.0"
+                       prefWidth="301.0"/>
+            <Button id="modifyPartSearchBtn" fx:id="modifyPartSearchBtn" layoutX="319.0" layoutY="10.0"
+                    mnemonicParsing="false" onAction="#onActionModifyPartSearch" text="Search"/>
+            <Button id="modifyPartToProductBtn" fx:id="modifyPartToProductBtn" layoutX="275.0" layoutY="170.0"
+                    mnemonicParsing="false" onAction="#onActionModifyAddPart" prefHeight="25.0" prefWidth="72.0"
+                    text="Add"/>
+            <TableView fx:id="modifyAddPartsTableView" layoutX="9.0" layoutY="40.0" prefHeight="125.0"
+                       prefWidth="369.0">
+                <columns>
+                    <TableColumn fx:id="modifyPartIdCol" prefWidth="58.0" text="Part ID"/>
+                    <TableColumn fx:id="modifyPartNameCol" prefWidth="72.0" text="Part Name"/>
+                    <TableColumn fx:id="modifyPartStockCol" prefWidth="109.0" text="Inventory Level"/>
+                    <TableColumn fx:id="modifyPartPriceCol" prefWidth="129.0" text="Price Per Unit"/>
+                </columns>
+            </TableView>
+        </AnchorPane>
+        <AnchorPane layoutX="415.0" layoutY="281.0" prefHeight="196.0" prefWidth="390.0">
+            <Button id="modifyAssocPartsDelBtn" fx:id="modifyAssocPartsDelBtn" layoutX="275.0" layoutY="170.0"
+                    mnemonicParsing="false" onAction="#onActionModifyDeletePart" prefHeight="25.0"
+                    prefWidth="72.0" text="Delete"/>
+            <TableView fx:id="modifyAssocPartsTableView" layoutX="9.0" layoutY="40.0" prefHeight="125.0"
+                       prefWidth="369.0">
+                <columns>
+                    <TableColumn fx:id="modifyAssocPartsIdCol" prefWidth="58.0" text="Part ID"/>
+                    <TableColumn fx:id="modifyAssocPartsNameCol" prefWidth="72.0" text="Part Name"/>
+                    <TableColumn fx:id="modifyAssocPartsStockCol" prefWidth="109.0" text="Inventory Level"/>
+                    <TableColumn fx:id="modifyAssocPriceCol" prefWidth="129.0" text="Price per Unit"/>
+                </columns>
+            </TableView>
+        </AnchorPane>
+        <Button id="modifyProductCancelBtn" fx:id="modifyProductsCancelButton" layoutX="693.0" layoutY="500.0"
+                mnemonicParsing="false" onAction="#onActionModifyProductCancel" prefHeight="25.0" prefWidth="72.0"
+                text="Cancel"/>
+        <Button id="modifyProductSaveBtn" fx:id="modifyProdSaveButton" layoutX="610.0" layoutY="500.0"
+                mnemonicParsing="false" onAction="#onActionModifyAddProductSave" prefHeight="25.0" prefWidth="65.0"
+                text="Save"/>
+    </AnchorPane>
 </AnchorPane>

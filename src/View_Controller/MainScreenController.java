@@ -104,7 +104,7 @@ public class MainScreenController implements Initializable {
                 alert.setTitle("Delete Part?");
                 alert.setContentText("Are you sure you want to delete " + selectedPart.getName() + "?");
                 Optional<ButtonType> option = alert.showAndWait();
-                if(option.get() == ButtonType.OK) {
+                if(option.isPresent() && option.get() == ButtonType.OK) {
                     Inventory.deletePart(selectedPart);
                     partsTableView.setItems(Inventory.getAllParts());
                 }
@@ -185,7 +185,7 @@ public class MainScreenController implements Initializable {
                 alert.setTitle("Delete Part?");
                 alert.setContentText("Are you sure you want to delete " + selectedProduct.getName() + "?");
                 Optional<ButtonType> option = alert.showAndWait();
-                if(option.get() == ButtonType.OK) {
+                if(option.isPresent() && option.get() == ButtonType.OK) {
                     Inventory.deleteProduct(selectedProduct);
                     productsTableView.setItems(Inventory.getAllProducts());
                 }

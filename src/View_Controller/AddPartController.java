@@ -130,7 +130,7 @@ public class AddPartController implements Initializable {
         alert.setTitle("Exit Add Part?");
         alert.setContentText("Exit & Return to Main Screen?");
         Optional<ButtonType> option = alert.showAndWait();
-        if(option.get() == ButtonType.OK){
+        if(option.isPresent() && option.get() == ButtonType.OK){
             mainScreen(event);
         }
     }

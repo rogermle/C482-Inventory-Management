@@ -4,51 +4,66 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="350.0" prefWidth="425.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
-    <children>
-        <Label id="addPartLbl" layoutX="7.0" prefHeight="28.0" prefWidth="136.0" text="Modify Part">
-            <font>
-                <Font name="Times New Roman Bold" size="24.0" />
-            </font>
-        </Label>
-        <RadioButton fx:id="modifyInHouse" layoutX="115.0" layoutY="36.0" mnemonicParsing="false" onAction="#onActionModifyInHouse" text="In-House" />
-        <RadioButton fx:id="modifyOutSourced" layoutX="229.0" layoutY="36.0" mnemonicParsing="false" onAction="#onActionModifyOutSourced" text="Outsourced" />
-        <Label layoutX="40.0" layoutY="60.0" text="ID">
-            <font>
-                <Font name="Times New Roman" size="18.0" />
-            </font></Label>
-        <Label layoutX="40.0" layoutY="140.0" text="Inv">
-            <font>
-                <Font name="Times New Roman" size="18.0" />
-            </font></Label>
-        <Label layoutX="40.0" layoutY="180.0" text="Price/Cost">
-            <font>
-                <Font name="Times New Roman" size="18.0" />
-            </font></Label>
-        <Label layoutX="40.0" layoutY="220.0" text="Max">
-            <font>
-                <Font name="Times New Roman" size="18.0" />
-            </font></Label>
-        <Label fx:id="modifyInHouseToggleLbl" layoutX="14.0" layoutY="264.0" text="Company Name">
-            <font>
-                <Font name="Times New Roman" size="18.0" />
-            </font></Label>
-        <Button fx:id="saveAdd" layoutX="267.0" layoutY="309.0" mnemonicParsing="false" onAction="#onActionModifySave" prefHeight="25.0" prefWidth="52.0" text="Save" />
-        <Button fx:id="cancelAdd" layoutX="336.0" layoutY="309.0" mnemonicParsing="false" onAction="#onActionModifyCancel" text="Cancel" />
-        <Label layoutX="251.0" layoutY="224.0" text="Min">
-            <font>
-                <Font name="Times New Roman" size="18.0" />
-            </font></Label>
-        <Label layoutX="40.0" layoutY="100.0" prefHeight="20.0" prefWidth="52.0" text="Name">
-            <font>
-                <Font name="Times New Roman" size="18.0" />
-            </font></Label>
-        <TextField fx:id="modifyId" disable="true" layoutX="140.0" layoutY="60.0" prefHeight="27.0" prefWidth="253.0" style="-fx-background-color: silver;" text="Auto Gen - Disabled" />
-        <TextField fx:id="modifyName" layoutX="140.0" layoutY="100.0" prefHeight="27.0" prefWidth="253.0" promptText="Part Name" />
-        <TextField fx:id="modifyInventory" layoutX="140.0" layoutY="140.0" prefHeight="27.0" prefWidth="253.0" promptText="Inventory #" />
-        <TextField fx:id="modifyPrice" layoutX="140.0" layoutY="180.0" prefHeight="27.0" prefWidth="253.0" promptText="Price/Cost" />
-        <TextField fx:id="modifyMax" layoutX="140.0" layoutY="220.0" prefHeight="25.0" prefWidth="86.0" promptText="Max" />
-        <TextField fx:id="modifyMin" layoutX="288.0" layoutY="220.0" prefHeight="27.0" prefWidth="105.0" promptText="Min" />
-        <TextField fx:id="modifyCompany" layoutX="140.0" layoutY="260.0" prefHeight="27.0" prefWidth="253.0" promptText="Company Name" />
-    </children>
+<AnchorPane prefHeight="350.0" prefWidth="425.0" xmlns="http://javafx.com/javafx/10.0.2-internal"
+            xmlns:fx="http://javafx.com/fxml/1">
+    <Label id="addPartLbl" layoutX="7.0" prefHeight="28.0" prefWidth="136.0" text="Modify Part">
+        <font>
+            <Font name="Times New Roman Bold" size="24.0"/>
+        </font>
+    </Label>
+    <RadioButton fx:id="modifyInHouse" layoutX="115.0" layoutY="36.0" mnemonicParsing="false"
+                 onAction="#onActionModifyInHouse" text="In-House"/>
+    <RadioButton fx:id="modifyOutSourced" layoutX="229.0" layoutY="36.0" mnemonicParsing="false"
+                 onAction="#onActionModifyOutSourced" text="Outsourced"/>
+    <Label layoutX="40.0" layoutY="60.0" text="ID">
+        <font>
+            <Font name="Times New Roman" size="18.0"/>
+        </font>
+    </Label>
+    <Label layoutX="40.0" layoutY="140.0" text="Inv">
+        <font>
+            <Font name="Times New Roman" size="18.0"/>
+        </font>
+    </Label>
+    <Label layoutX="40.0" layoutY="180.0" text="Price/Cost">
+        <font>
+            <Font name="Times New Roman" size="18.0"/>
+        </font>
+    </Label>
+    <Label layoutX="40.0" layoutY="220.0" text="Max">
+        <font>
+            <Font name="Times New Roman" size="18.0"/>
+        </font>
+    </Label>
+    <Label fx:id="modifyInHouseToggleLbl" layoutX="14.0" layoutY="264.0" text="Company Name">
+        <font>
+            <Font name="Times New Roman" size="18.0"/>
+        </font>
+    </Label>
+    <Button fx:id="saveAdd" layoutX="267.0" layoutY="309.0" mnemonicParsing="false" onAction="#onActionModifySave"
+            prefHeight="25.0" prefWidth="52.0" text="Save"/>
+    <Button fx:id="cancelAdd" layoutX="336.0" layoutY="309.0" mnemonicParsing="false" onAction="#onActionModifyCancel"
+            text="Cancel"/>
+    <Label layoutX="251.0" layoutY="224.0" text="Min">
+        <font>
+            <Font name="Times New Roman" size="18.0"/>
+        </font>
+    </Label>
+    <Label layoutX="40.0" layoutY="100.0" prefHeight="20.0" prefWidth="52.0" text="Name">
+        <font>
+            <Font name="Times New Roman" size="18.0"/>
+        </font>
+    </Label>
+    <TextField fx:id="modifyId" disable="true" layoutX="140.0" layoutY="60.0" prefHeight="27.0" prefWidth="253.0"
+               style="-fx-background-color: silver;" text="Auto Gen - Disabled"/>
+    <TextField fx:id="modifyName" layoutX="140.0" layoutY="100.0" prefHeight="27.0" prefWidth="253.0"
+               promptText="Part Name"/>
+    <TextField fx:id="modifyInventory" layoutX="140.0" layoutY="140.0" prefHeight="27.0" prefWidth="253.0"
+               promptText="Inventory #"/>
+    <TextField fx:id="modifyPrice" layoutX="140.0" layoutY="180.0" prefHeight="27.0" prefWidth="253.0"
+               promptText="Price/Cost"/>
+    <TextField fx:id="modifyMax" layoutX="140.0" layoutY="220.0" prefHeight="25.0" prefWidth="86.0" promptText="Max"/>
+    <TextField fx:id="modifyMin" layoutX="288.0" layoutY="220.0" prefHeight="27.0" prefWidth="105.0" promptText="Min"/>
+    <TextField fx:id="modifyCompany" layoutX="140.0" layoutY="260.0" prefHeight="27.0" prefWidth="253.0"
+               promptText="Company Name"/>
 </AnchorPane>

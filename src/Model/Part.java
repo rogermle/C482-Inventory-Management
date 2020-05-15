@@ -1,8 +1,5 @@
 package Model;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-
 public abstract class Part {
     protected int id;
     protected String name;
