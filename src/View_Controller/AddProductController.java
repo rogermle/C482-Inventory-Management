@@ -88,8 +88,14 @@ public class AddProductController implements Initializable {
     void onActionDeletePart(ActionEvent event) {
         Part assocPart = assocPartsTableView.getSelectionModel().getSelectedItem();
         if(assocPart != null) {
-            newProduct.deleteAssociatedPart(assocPart);
-            assocPartsTableView.setItems(newProduct.getAllAssociatedParts());
+            alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Delete Part?");
+            alert.setContentText("Are you sure you want to delete " + assocPart.getName() + " from this product?");
+            Optional<ButtonType> option = alert.showAndWait();
+            if(option.isPresent() && option.get()  == ButtonType.OK) {
+                newProduct.deleteAssociatedPart(assocPart);
+                assocPartsTableView.setItems(newProduct.getAllAssociatedParts());
+            }
         } else {
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Associated Part Error");
@@ -100,19 +106,12 @@ public class AddProductController implements Initializable {
 
     @FXML
     void onActionAddProductCancel(ActionEvent event) throws IOException{
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Exit Modify Part?");
         alert.setContentText("Exit & Return to Main Screen?");
         Optional<ButtonType> option = alert.showAndWait();
         if(option.isPresent() && option.get()  == ButtonType.OK) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View_Controller/MainScreen.fxml"));
-            View_Controller.MainScreenController controller = new View_Controller.MainScreenController(inv);
-            loader.setController(controller);
-            Parent root = loader.load();
-            stage = (Stage) ((Button)event.getSource()).getScene().getWindow();
-            stage.setTitle("Inventory Management System");
-            stage.setScene(new Scene(root));
-            stage.show();
+            mainScreen(event);
         }
     }
 
@@ -122,29 +121,22 @@ public class AddProductController implements Initializable {
         int newMin = Integer.parseInt(addMin.getText());
         int newMax = Integer.parseInt(addMax.getText());
         double newPrice = Double.parseDouble(addPrice.getText());
-        // Assumes ALL user input is valid
-        newProduct.setId(Inventory.getNextProductId());
-        newProduct.setName(addName.getText());
-        newProduct.setStock(newStock);
-        newProduct.setMin(newMin);
-        newProduct.setMax(newMax);
-        newProduct.setPrice(newPrice);
+
         if( newProduct.isValid(newStock, newMin, newMax)) {
+            newProduct.setId(Inventory.getNextProductId());
+            newProduct.setName(addName.getText());
+            newProduct.setStock(newStock);
+            newProduct.setMin(newMin);
+            newProduct.setMax(newMax);
+            newProduct.setPrice(newPrice);
             Inventory.addProduct(newProduct);
             // Redirect to Main Screen
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View_Controller/MainScreen.fxml"));
-            View_Controller.MainScreenController controller = new View_Controller.MainScreenController(inv);
-            loader.setController(controller);
-            Parent root = loader.load();
-            stage = (Stage) ((Button)event.getSource()).getScene().getWindow();
-            stage.setTitle("Inventory Management System");
-            stage.setScene(new Scene(root));
-            stage.show();
+            mainScreen(event);
         } else {
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Add Product Error");
-            alert.setContentText("Entered Stock Level: " + newProduct.getStock() +"\r\nMinimum: " + newProduct.getMin() +
-                    "\r\nMaximum: " + newProduct.getMax());
+            alert.setContentText("Entered Stock Level: " + newStock +"\r\nMinimum: " + newMin +
+                    "\r\nMaximum: " + newMax);
             alert.show();
         }
     }
@@ -169,5 +161,16 @@ public class AddProductController implements Initializable {
 
     public AddProductController(Inventory inv) {
         this.inv = inv;
+    }
+
+    private void mainScreen(ActionEvent event) throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View_Controller/MainScreen.fxml"));
+        View_Controller.MainScreenController controller = new View_Controller.MainScreenController(inv);
+        loader.setController(controller);
+        Parent root = loader.load();
+        stage = (Stage) ((Button)event.getSource()).getScene().getWindow();
+        stage.setTitle("Inventory Management System");
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 }

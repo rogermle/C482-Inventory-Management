@@ -14,6 +14,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
@@ -85,30 +86,34 @@ public class ModifyProductController implements Initializable {
     @FXML
     void onActionModifyAddPart(ActionEvent event) {
         Part addPart = modifyAddPartsTableView.getSelectionModel().getSelectedItem();
-        if( addPart == null) {
+        if( addPart != null) {
+            this.product.addAssociatedPart(addPart);
+        } else {
             //Display Error Message
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Modify Product Error");
             alert.setContentText("No Part selected for Add!");
             alert.show();
-        } else {
-            this.product.addAssociatedPart(addPart);
-            modifyAssocPartsTableView.setItems(this.product.getAllAssociatedParts());
         }
     }
 
     @FXML
     void onActionModifyDeletePart(ActionEvent event) {
         Part removePart = modifyAssocPartsTableView.getSelectionModel().getSelectedItem();
-        if( removePart == null) {
+        if( removePart != null) {
+            alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Delete Part?");
+            alert.setContentText("Are you sure you want to delete " + removePart.getName() + " from this product?");
+            Optional<ButtonType> option = alert.showAndWait();
+            if(option.isPresent() && option.get()  == ButtonType.OK) {
+                this.product.deleteAssociatedPart(removePart);
+            }
+        } else {
             //Display Error Message
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Modify Product Error");
             alert.setContentText("No Part selected for Delete!");
             alert.show();
-        } else {
-            this.product.deleteAssociatedPart(removePart);
-            modifyAssocPartsTableView.setItems(this.product.getAllAssociatedParts());
         }
     }
 
@@ -118,7 +123,7 @@ public class ModifyProductController implements Initializable {
         int newMin = Integer.parseInt(modifyMin.getText());
         int newMax = Integer.parseInt(modifyMax.getText());
         double newPrice = Double.parseDouble(modifyPrice.getText());
-        // Assumes ALL user input is valid
+
         if( this.product.isValid(newInventory, newMin, newMax)) {
             this.product.setName(modifyName.getText());
             this.product.setStock(newInventory);
@@ -127,19 +132,12 @@ public class ModifyProductController implements Initializable {
             this.product.setPrice(newPrice);
             Inventory.updateProduct(this.index, this.product);
             // Redirect to Main Screen
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View_Controller/MainScreen.fxml"));
-            View_Controller.MainScreenController controller = new View_Controller.MainScreenController(inv);
-            loader.setController(controller);
-            Parent root = loader.load();
-            stage = (Stage) ((Button)event.getSource()).getScene().getWindow();
-            stage.setTitle("Inventory Management System");
-            stage.setScene(new Scene(root));
-            stage.show();
+            mainScreen(event);
         } else {
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Add Product Error");
-            alert.setContentText("Entered Stock Level: " + this.product.getStock() +"\r\nMinimum: " + this.product.getMin() +
-                    "\r\nMaximum: " + this.product.getMax());
+            alert.setContentText("Entered Stock Level: " + newInventory +"\r\nMinimum: " + newMin +
+                    "\r\nMaximum: " + newMax);
             alert.show();
         }
     }
@@ -151,15 +149,10 @@ public class ModifyProductController implements Initializable {
         alert.setContentText("Exit & Return to Main Screen?");
         Optional<ButtonType> option = alert.showAndWait();
         if(option.isPresent() && option.get()  == ButtonType.OK) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View_Controller/MainScreen.fxml"));
-            View_Controller.MainScreenController controller = new View_Controller.MainScreenController(inv);
-            loader.setController(controller);
-            Parent root = loader.load();
-            stage = (Stage) ((Button)event.getSource()).getScene().getWindow();
-            stage.setTitle("Inventory Management System");
-            stage.setScene(new Scene(root));
-            stage.show();
+            mainScreen(event);
         }
+        // Reset Assoc Parts on ZERO saved changes
+        modifyAssocPartsTableView.setItems(this.product.getAllAssociatedParts());
     }
 
     @Override
@@ -189,5 +182,16 @@ public class ModifyProductController implements Initializable {
     public ModifyProductController(int selectedIndex, Product selectedProduct) {
         this.product = selectedProduct;
         this.index = selectedIndex;
+    }
+
+    private void mainScreen(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View_Controller/MainScreen.fxml"));
+        View_Controller.MainScreenController controller = new View_Controller.MainScreenController(inv);
+        loader.setController(controller);
+        Parent root = loader.load();
+        stage = (Stage) ((Button)event.getSource()).getScene().getWindow();
+        stage.setTitle("Inventory Management System");
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 }

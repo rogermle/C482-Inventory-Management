@@ -114,14 +114,7 @@ public class AddPartController implements Initializable {
 
         if( newPart.isValid(txtInv, txtMin, txtMax) ) {
             Inventory.addPart(newPart);
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View_Controller/MainScreen.fxml"));
-            View_Controller.MainScreenController controller = new View_Controller.MainScreenController(inv);
-            loader.setController(controller);
-            Parent root = loader.load();
-            stage = (Stage) ((Button)event.getSource()).getScene().getWindow();
-            stage.setTitle("Inventory Management System");
-            stage.setScene(new Scene(root));
-            stage.show();
+            mainScreen(event);
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Invalid Inventory Error");
@@ -138,15 +131,19 @@ public class AddPartController implements Initializable {
         alert.setContentText("Exit & Return to Main Screen?");
         Optional<ButtonType> option = alert.showAndWait();
         if(option.get() == ButtonType.OK){
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View_Controller/MainScreen.fxml"));
-            View_Controller.MainScreenController controller = new View_Controller.MainScreenController(inv);
-            loader.setController(controller);
-            Parent root = loader.load();
-            stage = (Stage) ((Button)event.getSource()).getScene().getWindow();
-            stage.setTitle("Inventory Management System");
-            stage.setScene(new Scene(root));
-            stage.show();
+            mainScreen(event);
         }
+    }
+
+    private void mainScreen(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View_Controller/MainScreen.fxml"));
+        View_Controller.MainScreenController controller = new View_Controller.MainScreenController(inv);
+        loader.setController(controller);
+        Parent root = loader.load();
+        stage = (Stage) ((Button)event.getSource()).getScene().getWindow();
+        stage.setTitle("Inventory Management System");
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 
 
